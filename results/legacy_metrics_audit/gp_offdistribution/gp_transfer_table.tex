@@ -1,0 +1,16 @@
+\begin{table}[t]
+\centering
+\scriptsize
+\caption{Gaussian-process baselines on the non-normal transfer system of Table~18 (mean $\pm$ 95\% CI over $S=10$ subsample seeds).}
+\label{tab:gp_transfer}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lcccc}
+\hline
+model & $E_{\mathrm{traj}}$ & $E_{\mathrm{cross}}$ & $E_{\mathrm{over}}$ & $E_{\mathrm{eq}}$ \\
+\hline
+GP, zero mean & $2.346e-13 \pm 6.7e-14$ & $1.020e-03 \pm 5.8e-07$ & $3.001e-07 \pm 3.0e-08$ & $4.481e-03 \pm 7.6e-09$ \\
+GP, $y_{\mathrm{base}}$ prior mean & $1.334e-13 \pm 2.6e-14$ & $1.022e-03 \pm 4.6e-07$ & $2.058e-07 \pm 2.5e-08$ & $4.481e-03 \pm 6.1e-09$ \\
+\hline
+\end{tabular}%
+}
+\end{table}

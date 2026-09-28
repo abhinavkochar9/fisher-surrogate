@@ -1,0 +1,16 @@
+{
+  "quick": false,
+  "n_seeds": 10,
+  "out": "results/legacy_metrics_audit/sklearn_tables",
+  "device": null,
+  "preset": "generalization",
+  "legacy_metrics": true,
+  "n_pairs": 600,
+  "n_time": 201,
+  "metrics": {
+    "cross_missing": "exclude",
+    "over_mode": "max",
+    "refine": false
+  },
+  "grid_resolution": 0.025
+}

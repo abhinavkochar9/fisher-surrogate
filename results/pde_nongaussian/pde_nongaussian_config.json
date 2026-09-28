@@ -1,0 +1,58 @@
+{
+  "quick": false,
+  "n_seeds": null,
+  "out": "results/pde_nongaussian",
+  "device": null,
+  "eps": 0.1,
+  "u0": 0.36,
+  "t_max": 5.0,
+  "t_long": 20.0,
+  "n_out": 501,
+  "rtol": 1e-08,
+  "atol": 1e-11,
+  "families": [
+    "Gaussian",
+    "Symmetric bimodal",
+    "Asymmetric bimodal",
+    "Laplace"
+  ],
+  "no_refinement": false,
+  "levels": {
+    "coarse": [
+      256,
+      0.0002
+    ],
+    "ref.": [
+      512,
+      0.0001
+    ],
+    "fine": [
+      1024,
+      5e-05
+    ]
+  },
+  "domains": [
+    6.0,
+    8.0
+  ],
+  "density_parameters": {
+    "Gaussian": {
+      "u0": 0.36
+    },
+    "Symmetric bimodal": {
+      "a": 0.5,
+      "sigma2": 0.10999999999999999
+    },
+    "Asymmetric bimodal": {
+      "w": 0.3,
+      "a1": 0.7424621202458748,
+      "sigma1_2": 0.12374999999999997,
+      "a2": 0.31819805153394637,
+      "sigma2_2": 0.12374999999999997,
+      "d_over_sigma": 3.0151134457776365
+    },
+    "Laplace": {
+      "b": 0.4242640687119285
+    }
+  }
+}

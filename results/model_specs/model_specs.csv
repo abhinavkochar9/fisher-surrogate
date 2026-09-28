@@ -1,0 +1,14 @@
+model,architecture,optimizer,epochs_stop,batch,solver,n_params,time_per_seed_s,epochs_run_mean
+Linear regression,"OLS on $(u_0,\varepsilon,t)$",closed form,--,--,--,,0.04045638628304,
+Polynomial (deg. 3),OLS on cubic features,closed form,--,--,--,,0.1202651159837842,
+Direct MLP,"$(u_0,\varepsilon,t)\to(64,64)\to u$, tanh","Adam, $2\times10^{-3}$ const.",1500 / pat. 150,512,--,4481.0,79.05418731607497,861.4
+Residual MLP (unscaled),"$u_{\mathrm{OU}}+r_\theta$, same net",same,same,512,--,4481.0,83.48010652270167,944.2
+Residual MLP (scaled),"$u_{\mathrm{OU}}+\varepsilon r_\theta$, same net",same,same,512,--,4481.0,86.14040913544595,941.6
+PI-Residual ($\lambda=0.1$),scaled residual $+\lambda\mathcal L_{\mathrm{phys}}$,same,same,512,autograd $\partial_t$,4481.0,90.11915491144173,627.6
+DeepONet-style,"branch $(u_0,\varepsilon)\to(64,64)\to64$; trunk $t\to(64,64)\to64$",same,same,512,--,16961.0,80.95293277464808,630.1
+Neural ODE,"$g_\phi(u,\varepsilon,t)$: (64,64), tanh",same,same,full batch (pairs),"dopri5, rtol 1e-06 / atol 1e-08",4481.0,250.0440951491706,1231.8
+"Neural ODE, tight tolerance",same,same,same,full batch (pairs),"dopri5, rtol 1e-08 / atol 1e-10",4481.0,496.3025111800991,1231.8
+Residual Neural ODE,"$2(1-u)+\varepsilon g_\phi$, same net",same,same,full batch (pairs),"dopri5, rtol 1e-06 / atol 1e-08",4481.0,305.7770687297918,1500.0
+Direct MLP + $u_{\mathrm{OU}}$ input,"$(u_0,\varepsilon,t,u_{\mathrm{OU}})\to(64,64)\to u$",same,same,512,--,4545.0,93.75708893160336,1040.1
+Gaussian process,"RBF-ARD + white noise, zero mean (5 hyper.)",L-BFGS marginal lik.,--,$n_{\mathrm{sub}}=2000$,--,5.0,171.6227451636456,
+GP with OU prior mean,"RBF-ARD, mean $u_{\mathrm{OU}}$ (5 hyper.)",same,--,$n_{\mathrm{sub}}=2000$,--,5.0,168.98054681820796,

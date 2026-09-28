@@ -1,0 +1,18 @@
+\begin{table}[t]
+\centering
+\scriptsize
+\caption{DeepONet-style branch--trunk baseline (mean $\pm$ 95\% CI over $S=10$ seeds).}
+\label{tab:deeponet_baseline}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lcccc}
+\hline
+model & $E_{\mathrm{traj}}$ & $E_{\mathrm{cross}}$ & $E_{\mathrm{over}}$ & $E_{\mathrm{eq}}$ \\
+\hline
+Direct MLP & $1.268e-07 \pm 2.8e-08$ & $2.271e-03 \pm 4.0e-04$ & $4.774e-04 \pm 9.7e-05$ & $2.461e-04 \pm 3.9e-05$ \\
+Residual MLP & $4.772e-09 \pm 1.1e-09$ & $2.294e-04 \pm 4.4e-05$ & $6.034e-05 \pm 2.2e-05$ & $4.571e-05 \pm 1.1e-05$ \\
+PI-Residual, $\lambda=0.1$ & $1.927e-08 \pm 6.8e-09$ & $6.414e-04 \pm 1.4e-04$ & $1.330e-04 \pm 3.5e-05$ & $6.896e-05 \pm 1.8e-05$ \\
+DeepONet-style baseline & $6.335e-07 \pm 1.1e-07$ & $4.089e-03 \pm 7.9e-04$ & $1.130e-03 \pm 2.1e-04$ & $5.382e-04 \pm 1.3e-04$ \\
+\hline
+\end{tabular}%
+}
+\end{table}

@@ -1,0 +1,26 @@
+\begin{table}[t]
+\centering
+\scriptsize
+\caption{(A) Non-Gaussian PDE targets with the reduced-ODE baseline, stratified by baseline error (mean $\pm$ 95\% CI over $S=10$ seeds).}
+\label{tab:imperfect_A}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{llcccc}
+\hline
+stratum & model & $E_{\mathrm{traj}}$ & $E_{\mathrm{cross}}$ & $E_{\mathrm{over}}$ & $E_{\mathrm{eq}}$ \\
+\hline
+exact & Direct MLP & $8.204e-07 \pm 1.2e-07$ & $5.357e-03 \pm 2.8e-03$ & $4.606e-04 \pm 1.8e-04$ & $3.905e-04 \pm 1.2e-04$ \\
+large & Direct MLP & $5.327e-07 \pm 1.1e-07$ & $2.312e-03 \pm 4.3e-04$ & $6.155e-04 \pm 1.1e-04$ & $3.699e-04 \pm 1.0e-04$ \\
+medium & Direct MLP & $1.704e-07 \pm 3.7e-08$ & $7.827e-03 \pm 2.7e-03$ & $4.247e-04 \pm 1.3e-04$ & $4.349e-04 \pm 1.6e-04$ \\
+small & Direct MLP & $3.708e-07 \pm 1.2e-07$ & $2.650e-03 \pm 8.0e-04$ & $6.616e-04 \pm 2.9e-04$ & $3.671e-04 \pm 9.7e-05$ \\
+exact & Direct MLP + $u_{\mathrm{ODE}}$ input & $7.423e-07 \pm 2.4e-07$ & $3.996e-03 \pm 1.9e-03$ & $3.572e-04 \pm 8.7e-05$ & $3.386e-04 \pm 5.8e-05$ \\
+large & Direct MLP + $u_{\mathrm{ODE}}$ input & $4.570e-07 \pm 6.2e-08$ & $3.307e-03 \pm 2.6e-04$ & $6.927e-04 \pm 8.4e-05$ & $2.606e-04 \pm 7.9e-05$ \\
+medium & Direct MLP + $u_{\mathrm{ODE}}$ input & $1.789e-07 \pm 4.0e-08$ & $3.956e-03 \pm 1.2e-03$ & $3.106e-04 \pm 1.2e-04$ & $2.991e-04 \pm 1.0e-04$ \\
+small & Direct MLP + $u_{\mathrm{ODE}}$ input & $2.666e-07 \pm 4.5e-08$ & $2.032e-03 \pm 1.1e-03$ & $5.384e-04 \pm 1.0e-04$ & $3.200e-04 \pm 7.4e-05$ \\
+exact & Residual MLP & $1.022e-10 \pm 4.3e-11$ & $6.813e-05 \pm 2.6e-05$ & $7.003e-06 \pm 1.7e-06$ & $7.253e-05 \pm 2.8e-06$ \\
+large & Residual MLP & $1.461e-08 \pm 4.3e-09$ & $3.016e-04 \pm 1.2e-04$ & $7.796e-05 \pm 3.1e-05$ & $6.325e-05 \pm 4.0e-06$ \\
+medium & Residual MLP & $1.692e-10 \pm 3.3e-11$ & $2.409e-04 \pm 4.8e-05$ & $6.982e-06 \pm 1.7e-06$ & $6.960e-05 \pm 2.3e-06$ \\
+small & Residual MLP & $1.881e-10 \pm 5.4e-11$ & $3.556e-05 \pm 1.2e-05$ & $1.362e-05 \pm 3.9e-06$ & $6.481e-05 \pm 4.2e-06$ \\
+\hline
+\end{tabular}%
+}
+\end{table}

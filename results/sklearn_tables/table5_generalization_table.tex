@@ -1,0 +1,18 @@
+\begin{table}[t]
+\centering
+\scriptsize
+\caption{Generalization of the structure-aware residual MLP across interpolation and selected extrapolation regimes (mean $\pm$ 95\% CI over $S=10$ seeds).}
+\label{tab:surrogate-generalization}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lcccc}
+\hline
+regime & $E_{\mathrm{traj}}$ & $E_{\mathrm{cross}}$ & $E_{\mathrm{over}}$ & $E_{\mathrm{eq}}$ \\
+\hline
+Interpolation & $7.917e-09 \pm 2.7e-09$ & $3.148e-04 \pm 5.2e-05$ & $8.043e-05 \pm 2.6e-05$ & $5.480e-05 \pm 1.7e-05$ \\
+Low-$u_{0}$ extrapolation & $6.525e-06 \pm 8.2e-07$ & $5.705e-03 \pm 9.7e-04$ & $1.109e-04 \pm 5.4e-05$ & $1.173e-04 \pm 4.9e-05$ \\
+High-$u_{0}$ extrapolation & $1.230e-06 \pm 5.8e-07$ & -- & $4.575e-04 \pm 2.6e-04$ & $2.585e-04 \pm 8.0e-05$ \\
+High-$\varepsilon$ extrapolation & $5.530e-06 \pm 2.8e-06$ & $3.598e-03 \pm 9.7e-04$ & $1.883e-03 \pm 3.7e-04$ & $2.306e-03 \pm 5.7e-04$ \\
+\hline
+\end{tabular}%
+}
+\end{table}

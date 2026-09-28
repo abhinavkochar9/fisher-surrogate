@@ -1,0 +1,22 @@
+\begin{table}[t]
+\centering
+\scriptsize
+\caption{Noise sensitivity (noise added only to training targets; mean $\pm$ 95\% CI over $S=10$ seeds).}
+\label{tab:noise_sensitivity}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{llcccc}
+\hline
+noise & model & $E_{\mathrm{traj}}$ & $E_{\mathrm{cross}}$ & $E_{\mathrm{over}}$ & $E_{\mathrm{eq}}$ \\
+\hline
+0\% & Direct MLP & $1.268e-07 \pm 2.8e-08$ & $2.444e-03 \pm 4.6e-04$ & $4.601e-04 \pm 9.9e-05$ & $2.461e-04 \pm 3.9e-05$ \\
+0\% & Residual MLP & $4.772e-09 \pm 1.1e-09$ & $8.077e-04 \pm 6.4e-05$ & $5.360e-05 \pm 2.3e-05$ & $4.571e-05 \pm 1.1e-05$ \\
+0.1\% & Direct MLP & $1.306e-07 \pm 2.6e-08$ & $2.129e-03 \pm 3.6e-04$ & $4.742e-04 \pm 1.0e-04$ & $3.023e-04 \pm 7.8e-05$ \\
+0.1\% & Residual MLP & $2.240e-08 \pm 7.5e-09$ & $9.089e-04 \pm 1.4e-04$ & $1.327e-04 \pm 4.1e-05$ & $1.171e-04 \pm 3.9e-05$ \\
+1\% & Direct MLP & $3.162e-07 \pm 7.9e-08$ & $3.710e-03 \pm 1.0e-03$ & $8.728e-04 \pm 1.6e-04$ & $3.760e-04 \pm 9.8e-05$ \\
+1\% & Residual MLP & $4.349e-07 \pm 1.7e-07$ & $2.303e-03 \pm 5.1e-04$ & $6.217e-04 \pm 1.8e-04$ & $3.976e-04 \pm 1.0e-04$ \\
+5\% & Direct MLP & $1.801e-06 \pm 2.6e-07$ & $7.321e-03 \pm 1.8e-03$ & $1.967e-03 \pm 3.0e-04$ & $8.371e-04 \pm 1.4e-04$ \\
+5\% & Residual MLP & $7.214e-06 \pm 6.6e-06$ & $1.006e-02 \pm 3.2e-03$ & $2.043e-03 \pm 4.9e-04$ & $1.380e-03 \pm 4.9e-04$ \\
+\hline
+\end{tabular}%
+}
+\end{table}

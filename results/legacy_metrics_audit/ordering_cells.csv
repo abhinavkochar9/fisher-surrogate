@@ -1,0 +1,82 @@
+table,group,metric,changed,unified_order,legacy_order
+tab:surrogate_results,-,E_traj,False,Direct MLP surrogate < Polynomial regression < Linear regression,Direct MLP surrogate < Polynomial regression < Linear regression
+tab:surrogate_results,-,E_cross,False,Direct MLP surrogate < Polynomial regression,Direct MLP surrogate < Polynomial regression
+tab:surrogate_results,-,E_over,False,Direct MLP surrogate < Polynomial regression < Linear regression,Direct MLP surrogate < Polynomial regression < Linear regression
+tab:surrogate_results,-,E_eq,False,Direct MLP surrogate < Linear regression < Polynomial regression,Direct MLP surrogate < Linear regression < Polynomial regression
+tab:surrogate_ablation,-,E_traj,False,"Residual MLP $(64,64)$ < Medium MLP w/o input scaling < Large MLP $(128,128)$ < Medium MLP $(64,64)$ < Medium MLP w/o target scaling < Small MLP $(32)$","Residual MLP $(64,64)$ < Medium MLP w/o input scaling < Large MLP $(128,128)$ < Medium MLP $(64,64)$ < Medium MLP w/o target scaling < Small MLP $(32)$"
+tab:surrogate_ablation,-,E_cross,False,"Residual MLP $(64,64)$ < Large MLP $(128,128)$ < Medium MLP w/o input scaling < Medium MLP $(64,64)$ < Medium MLP w/o target scaling < Small MLP $(32)$","Residual MLP $(64,64)$ < Large MLP $(128,128)$ < Medium MLP w/o input scaling < Medium MLP $(64,64)$ < Medium MLP w/o target scaling < Small MLP $(32)$"
+tab:surrogate_ablation,-,E_over,False,"Residual MLP $(64,64)$ < Medium MLP w/o input scaling < Large MLP $(128,128)$ < Medium MLP $(64,64)$ < Small MLP $(32)$ < Medium MLP w/o target scaling","Residual MLP $(64,64)$ < Medium MLP w/o input scaling < Large MLP $(128,128)$ < Medium MLP $(64,64)$ < Small MLP $(32)$ < Medium MLP w/o target scaling"
+tab:surrogate_ablation,-,E_eq,False,"Residual MLP $(64,64)$ < Medium MLP w/o input scaling < Large MLP $(128,128)$ < Medium MLP $(64,64)$ < Small MLP $(32)$ < Medium MLP w/o target scaling","Residual MLP $(64,64)$ < Medium MLP w/o input scaling < Large MLP $(128,128)$ < Medium MLP $(64,64)$ < Small MLP $(32)$ < Medium MLP w/o target scaling"
+tab:physics_informed_residual,-,E_traj,False,"Scaled residual MLP (proposed) < PI-Residual, $\lambda=0.01$ < PI-Residual, $\lambda=0.1$ < Unscaled residual MLP < Direct MLP < PI-Residual, $\lambda=1.0$","Scaled residual MLP (proposed) < PI-Residual, $\lambda=0.01$ < PI-Residual, $\lambda=0.1$ < Unscaled residual MLP < Direct MLP < PI-Residual, $\lambda=1.0$"
+tab:physics_informed_residual,-,E_cross,True,"Scaled residual MLP (proposed) < PI-Residual, $\lambda=0.01$ < PI-Residual, $\lambda=0.1$ < Unscaled residual MLP < PI-Residual, $\lambda=1.0$ < Direct MLP","PI-Residual, $\lambda=0.01$ < Scaled residual MLP (proposed) < PI-Residual, $\lambda=0.1$ < Unscaled residual MLP < PI-Residual, $\lambda=1.0$ < Direct MLP"
+tab:physics_informed_residual,-,E_over,True,"PI-Residual, $\lambda=0.01$ < Scaled residual MLP (proposed) < PI-Residual, $\lambda=0.1$ < Unscaled residual MLP < PI-Residual, $\lambda=1.0$ < Direct MLP","Scaled residual MLP (proposed) < PI-Residual, $\lambda=0.01$ < PI-Residual, $\lambda=0.1$ < Unscaled residual MLP < PI-Residual, $\lambda=1.0$ < Direct MLP"
+tab:physics_informed_residual,-,E_eq,False,"Scaled residual MLP (proposed) < PI-Residual, $\lambda=0.01$ < PI-Residual, $\lambda=0.1$ < PI-Residual, $\lambda=1.0$ < Unscaled residual MLP < Direct MLP","Scaled residual MLP (proposed) < PI-Residual, $\lambda=0.01$ < PI-Residual, $\lambda=0.1$ < PI-Residual, $\lambda=1.0$ < Unscaled residual MLP < Direct MLP"
+tab:deeponet_baseline,-,E_traj,False,"Residual MLP < PI-Residual, $\lambda=0.1$ < Direct MLP < DeepONet-style baseline","Residual MLP < PI-Residual, $\lambda=0.1$ < Direct MLP < DeepONet-style baseline"
+tab:deeponet_baseline,-,E_cross,False,"Residual MLP < PI-Residual, $\lambda=0.1$ < Direct MLP < DeepONet-style baseline","Residual MLP < PI-Residual, $\lambda=0.1$ < Direct MLP < DeepONet-style baseline"
+tab:deeponet_baseline,-,E_over,False,"Residual MLP < PI-Residual, $\lambda=0.1$ < Direct MLP < DeepONet-style baseline","Residual MLP < PI-Residual, $\lambda=0.1$ < Direct MLP < DeepONet-style baseline"
+tab:deeponet_baseline,-,E_eq,False,"Residual MLP < PI-Residual, $\lambda=0.1$ < Direct MLP < DeepONet-style baseline","Residual MLP < PI-Residual, $\lambda=0.1$ < Direct MLP < DeepONet-style baseline"
+tab:noise_sensitivity,0\%,E_traj,False,Residual MLP < Direct MLP,Residual MLP < Direct MLP
+tab:noise_sensitivity,0\%,E_cross,False,Residual MLP < Direct MLP,Residual MLP < Direct MLP
+tab:noise_sensitivity,0\%,E_over,False,Residual MLP < Direct MLP,Residual MLP < Direct MLP
+tab:noise_sensitivity,0\%,E_eq,False,Residual MLP < Direct MLP,Residual MLP < Direct MLP
+tab:noise_sensitivity,0.1\%,E_traj,False,Residual MLP < Direct MLP,Residual MLP < Direct MLP
+tab:noise_sensitivity,0.1\%,E_cross,False,Residual MLP < Direct MLP,Residual MLP < Direct MLP
+tab:noise_sensitivity,0.1\%,E_over,False,Residual MLP < Direct MLP,Residual MLP < Direct MLP
+tab:noise_sensitivity,0.1\%,E_eq,False,Residual MLP < Direct MLP,Residual MLP < Direct MLP
+tab:noise_sensitivity,1\%,E_traj,False,Direct MLP < Residual MLP,Direct MLP < Residual MLP
+tab:noise_sensitivity,1\%,E_cross,False,Residual MLP < Direct MLP,Residual MLP < Direct MLP
+tab:noise_sensitivity,1\%,E_over,False,Residual MLP < Direct MLP,Residual MLP < Direct MLP
+tab:noise_sensitivity,1\%,E_eq,False,Direct MLP < Residual MLP,Direct MLP < Residual MLP
+tab:noise_sensitivity,5\%,E_traj,False,Direct MLP < Residual MLP,Direct MLP < Residual MLP
+tab:noise_sensitivity,5\%,E_cross,False,Direct MLP < Residual MLP,Direct MLP < Residual MLP
+tab:noise_sensitivity,5\%,E_over,False,Direct MLP < Residual MLP,Direct MLP < Residual MLP
+tab:noise_sensitivity,5\%,E_eq,False,Direct MLP < Residual MLP,Direct MLP < Residual MLP
+tab:eps_ablation,$\varepsilon = 0$ (exact),E_traj,False,Residual MLP < Direct MLP,Residual MLP < Direct MLP
+tab:eps_ablation,$\varepsilon = 0$ (exact),E_over,False,Residual MLP < Direct MLP,Residual MLP < Direct MLP
+tab:eps_ablation,$\varepsilon = 0$ (exact),E_eq,False,Residual MLP < Direct MLP,Residual MLP < Direct MLP
+tab:eps_ablation,"[0.01, 0.1]",E_traj,False,Residual MLP < Direct MLP,Residual MLP < Direct MLP
+tab:eps_ablation,"[0.01, 0.1]",E_cross,False,Residual MLP < Direct MLP,Residual MLP < Direct MLP
+tab:eps_ablation,"[0.01, 0.1]",E_over,False,Residual MLP < Direct MLP,Residual MLP < Direct MLP
+tab:eps_ablation,"[0.01, 0.1]",E_eq,False,Residual MLP < Direct MLP,Residual MLP < Direct MLP
+tab:eps_ablation,"[0.1, 0.3]",E_traj,False,Residual MLP < Direct MLP,Residual MLP < Direct MLP
+tab:eps_ablation,"[0.1, 0.3]",E_cross,False,Residual MLP < Direct MLP,Residual MLP < Direct MLP
+tab:eps_ablation,"[0.1, 0.3]",E_over,False,Residual MLP < Direct MLP,Residual MLP < Direct MLP
+tab:eps_ablation,"[0.1, 0.3]",E_eq,False,Residual MLP < Direct MLP,Residual MLP < Direct MLP
+tab:eps_ablation,"[0.3, 0.5]",E_traj,False,Residual MLP < Direct MLP,Residual MLP < Direct MLP
+tab:eps_ablation,"[0.3, 0.5]",E_cross,False,Residual MLP < Direct MLP,Residual MLP < Direct MLP
+tab:eps_ablation,"[0.3, 0.5]",E_over,False,Residual MLP < Direct MLP,Residual MLP < Direct MLP
+tab:eps_ablation,"[0.3, 0.5]",E_eq,False,Residual MLP < Direct MLP,Residual MLP < Direct MLP
+tab:eps_ablation,"[0.5, 1.0] (OOD)",E_traj,False,Residual MLP < Direct MLP,Residual MLP < Direct MLP
+tab:eps_ablation,"[0.5, 1.0] (OOD)",E_cross,False,Residual MLP < Direct MLP,Residual MLP < Direct MLP
+tab:eps_ablation,"[0.5, 1.0] (OOD)",E_over,False,Residual MLP < Direct MLP,Residual MLP < Direct MLP
+tab:eps_ablation,"[0.5, 1.0] (OOD)",E_eq,False,Residual MLP < Direct MLP,Residual MLP < Direct MLP
+tab:feature_matched,-,E_traj,False,"GP, $u_{\mathrm{OU}}$ prior mean < GP, zero mean < Scaled residual MLP (proposed) < Unscaled residual (difference model) < Direct MLP (no baseline) < Direct MLP + $u_{\mathrm{OU}}$ input < Residual Neural ODE < Neural ODE (full field)","GP, $u_{\mathrm{OU}}$ prior mean < GP, zero mean < Scaled residual MLP (proposed) < Unscaled residual (difference model) < Direct MLP (no baseline) < Direct MLP + $u_{\mathrm{OU}}$ input < Residual Neural ODE < Neural ODE (full field)"
+tab:feature_matched,-,E_cross,False,"GP, $u_{\mathrm{OU}}$ prior mean < GP, zero mean < Scaled residual MLP (proposed) < Unscaled residual (difference model) < Direct MLP + $u_{\mathrm{OU}}$ input < Direct MLP (no baseline) < Residual Neural ODE < Neural ODE (full field)","GP, $u_{\mathrm{OU}}$ prior mean < GP, zero mean < Scaled residual MLP (proposed) < Unscaled residual (difference model) < Direct MLP + $u_{\mathrm{OU}}$ input < Direct MLP (no baseline) < Residual Neural ODE < Neural ODE (full field)"
+tab:feature_matched,-,E_over,False,"GP, zero mean < GP, $u_{\mathrm{OU}}$ prior mean < Scaled residual MLP (proposed) < Residual Neural ODE < Unscaled residual (difference model) < Direct MLP (no baseline) < Direct MLP + $u_{\mathrm{OU}}$ input < Neural ODE (full field)","GP, zero mean < GP, $u_{\mathrm{OU}}$ prior mean < Scaled residual MLP (proposed) < Residual Neural ODE < Unscaled residual (difference model) < Direct MLP (no baseline) < Direct MLP + $u_{\mathrm{OU}}$ input < Neural ODE (full field)"
+tab:feature_matched,-,E_eq,False,"GP, zero mean < GP, $u_{\mathrm{OU}}$ prior mean < Scaled residual MLP (proposed) < Unscaled residual (difference model) < Direct MLP (no baseline) < Direct MLP + $u_{\mathrm{OU}}$ input < Residual Neural ODE < Neural ODE (full field)","GP, zero mean < GP, $u_{\mathrm{OU}}$ prior mean < Scaled residual MLP (proposed) < Unscaled residual (difference model) < Direct MLP (no baseline) < Direct MLP + $u_{\mathrm{OU}}$ input < Residual Neural ODE < Neural ODE (full field)"
+tab:node_gp_baselines,-,E_traj,False,"Gaussian process < Residual MLP (proposed) < Direct MLP < Residual Neural ODE (standard: rtol=1e-06, atol=1e-08) < Residual Neural ODE (tight: rtol=1e-08, atol=1e-10) < Neural ODE (standard: rtol=1e-06, atol=1e-08) < Neural ODE (tight: rtol=1e-08, atol=1e-10)","Gaussian process < Residual MLP (proposed) < Direct MLP < Residual Neural ODE (standard: rtol=1e-06, atol=1e-08) < Residual Neural ODE (tight: rtol=1e-08, atol=1e-10) < Neural ODE (standard: rtol=1e-06, atol=1e-08) < Neural ODE (tight: rtol=1e-08, atol=1e-10)"
+tab:node_gp_baselines,-,E_cross,True,"Gaussian process < Residual MLP (proposed) < Direct MLP < Residual Neural ODE (tight: rtol=1e-08, atol=1e-10) < Residual Neural ODE (standard: rtol=1e-06, atol=1e-08) < Neural ODE (tight: rtol=1e-08, atol=1e-10) < Neural ODE (standard: rtol=1e-06, atol=1e-08)","Gaussian process < Residual MLP (proposed) < Direct MLP < Residual Neural ODE (standard: rtol=1e-06, atol=1e-08) < Residual Neural ODE (tight: rtol=1e-08, atol=1e-10) < Neural ODE (tight: rtol=1e-08, atol=1e-10) < Neural ODE (standard: rtol=1e-06, atol=1e-08)"
+tab:node_gp_baselines,-,E_over,True,"Gaussian process < Residual MLP (proposed) < Residual Neural ODE (tight: rtol=1e-08, atol=1e-10) < Residual Neural ODE (standard: rtol=1e-06, atol=1e-08) < Direct MLP < Neural ODE (standard: rtol=1e-06, atol=1e-08) < Neural ODE (tight: rtol=1e-08, atol=1e-10)","Gaussian process < Residual MLP (proposed) < Residual Neural ODE (standard: rtol=1e-06, atol=1e-08) < Residual Neural ODE (tight: rtol=1e-08, atol=1e-10) < Direct MLP < Neural ODE (standard: rtol=1e-06, atol=1e-08) < Neural ODE (tight: rtol=1e-08, atol=1e-10)"
+tab:node_gp_baselines,-,E_eq,False,"Gaussian process < Residual MLP (proposed) < Direct MLP < Residual Neural ODE (standard: rtol=1e-06, atol=1e-08) < Residual Neural ODE (tight: rtol=1e-08, atol=1e-10) < Neural ODE (standard: rtol=1e-06, atol=1e-08) < Neural ODE (tight: rtol=1e-08, atol=1e-10)","Gaussian process < Residual MLP (proposed) < Direct MLP < Residual Neural ODE (standard: rtol=1e-06, atol=1e-08) < Residual Neural ODE (tight: rtol=1e-08, atol=1e-10) < Neural ODE (standard: rtol=1e-06, atol=1e-08) < Neural ODE (tight: rtol=1e-08, atol=1e-10)"
+tab:phys_convergence,-,E_traj,False,"Residual MLP, $\lambda=0.0$ < Residual MLP, $\lambda=0.01$ < Residual MLP, $\lambda=0.1$ < Residual MLP, $\lambda=1.0$","Residual MLP, $\lambda=0.0$ < Residual MLP, $\lambda=0.01$ < Residual MLP, $\lambda=0.1$ < Residual MLP, $\lambda=1.0$"
+tab:phys_convergence,-,E_cross,True,"Residual MLP, $\lambda=0.0$ < Residual MLP, $\lambda=0.1$ < Residual MLP, $\lambda=0.01$ < Residual MLP, $\lambda=1.0$","Residual MLP, $\lambda=0.0$ < Residual MLP, $\lambda=0.01$ < Residual MLP, $\lambda=0.1$ < Residual MLP, $\lambda=1.0$"
+tab:phys_convergence,-,E_over,False,"Residual MLP, $\lambda=0.0$ < Residual MLP, $\lambda=0.01$ < Residual MLP, $\lambda=0.1$ < Residual MLP, $\lambda=1.0$","Residual MLP, $\lambda=0.0$ < Residual MLP, $\lambda=0.01$ < Residual MLP, $\lambda=0.1$ < Residual MLP, $\lambda=1.0$"
+tab:phys_convergence,-,E_eq,False,"Residual MLP, $\lambda=0.0$ < Residual MLP, $\lambda=0.1$ < Residual MLP, $\lambda=0.01$ < Residual MLP, $\lambda=1.0$","Residual MLP, $\lambda=0.0$ < Residual MLP, $\lambda=0.1$ < Residual MLP, $\lambda=0.01$ < Residual MLP, $\lambda=1.0$"
+tab:ood_generalization,Low variance,E_traj,False,Gaussian process < Residual MLP < Direct MLP,Gaussian process < Residual MLP < Direct MLP
+tab:ood_generalization,Low variance,E_cross,False,Gaussian process < Residual MLP < Direct MLP,Gaussian process < Residual MLP < Direct MLP
+tab:ood_generalization,Low variance,E_over,True,Residual MLP < Gaussian process < Direct MLP,Residual MLP < Direct MLP < Gaussian process
+tab:ood_generalization,Low variance,E_eq,False,Residual MLP < Gaussian process < Direct MLP,Residual MLP < Gaussian process < Direct MLP
+tab:ood_generalization,High variance,E_traj,False,Residual MLP < Direct MLP < Gaussian process,Residual MLP < Direct MLP < Gaussian process
+tab:ood_generalization,High variance,E_over,False,Residual MLP < Gaussian process < Direct MLP,Residual MLP < Gaussian process < Direct MLP
+tab:ood_generalization,High variance,E_eq,False,Residual MLP < Direct MLP < Gaussian process,Residual MLP < Direct MLP < Gaussian process
+tab:ood_generalization,High Fisher strength,E_traj,False,Gaussian process < Residual MLP < Direct MLP,Gaussian process < Residual MLP < Direct MLP
+tab:ood_generalization,High Fisher strength,E_cross,False,Gaussian process < Residual MLP < Direct MLP,Gaussian process < Residual MLP < Direct MLP
+tab:ood_generalization,High Fisher strength,E_over,False,Gaussian process < Residual MLP < Direct MLP,Gaussian process < Residual MLP < Direct MLP
+tab:ood_generalization,High Fisher strength,E_eq,False,Gaussian process < Residual MLP < Direct MLP,Gaussian process < Residual MLP < Direct MLP
+tab:ood_generalization,Longer time,E_traj,False,Residual MLP < Direct MLP < Gaussian process,Residual MLP < Direct MLP < Gaussian process
+tab:ood_generalization,Longer time,E_over,False,Residual MLP < Direct MLP < Gaussian process,Residual MLP < Direct MLP < Gaussian process
+tab:ood_generalization,Longer time,E_eq,False,Residual MLP < Direct MLP < Gaussian process,Residual MLP < Direct MLP < Gaussian process
+tab:transfer,-,E_traj,False,Gaussian process < Residual MLP < Direct MLP < Direct MLP + $y_{\mathrm{base}}$ input < Residual Neural ODE,Gaussian process < Residual MLP < Direct MLP < Direct MLP + $y_{\mathrm{base}}$ input < Residual Neural ODE
+tab:transfer,-,E_cross,False,Gaussian process < Residual MLP < Direct MLP < Direct MLP + $y_{\mathrm{base}}$ input < Residual Neural ODE,Gaussian process < Residual MLP < Direct MLP < Direct MLP + $y_{\mathrm{base}}$ input < Residual Neural ODE
+tab:transfer,-,E_over,False,Gaussian process < Residual MLP < Direct MLP < Direct MLP + $y_{\mathrm{base}}$ input < Residual Neural ODE,Gaussian process < Residual MLP < Direct MLP < Direct MLP + $y_{\mathrm{base}}$ input < Residual Neural ODE
+tab:transfer,-,E_eq,False,Direct MLP + $y_{\mathrm{base}}$ input < Direct MLP < Gaussian process < Residual MLP < Residual Neural ODE,Direct MLP + $y_{\mathrm{base}}$ input < Direct MLP < Gaussian process < Residual MLP < Residual Neural ODE

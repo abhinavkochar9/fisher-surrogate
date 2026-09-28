@@ -1,0 +1,33 @@
+family,L,nx,n_modes
+Gaussian,6.0,256,1
+Gaussian,6.0,512,1
+Gaussian,6.0,768,1
+Gaussian,6.0,1024,1
+Gaussian,8.0,256,1
+Gaussian,8.0,512,1
+Gaussian,8.0,768,1
+Gaussian,8.0,1024,1
+Symmetric bimodal,6.0,256,2
+Symmetric bimodal,6.0,512,2
+Symmetric bimodal,6.0,768,2
+Symmetric bimodal,6.0,1024,2
+Symmetric bimodal,8.0,256,2
+Symmetric bimodal,8.0,512,2
+Symmetric bimodal,8.0,768,2
+Symmetric bimodal,8.0,1024,2
+Asymmetric bimodal,6.0,256,2
+Asymmetric bimodal,6.0,512,2
+Asymmetric bimodal,6.0,768,2
+Asymmetric bimodal,6.0,1024,2
+Asymmetric bimodal,8.0,256,2
+Asymmetric bimodal,8.0,512,2
+Asymmetric bimodal,8.0,768,2
+Asymmetric bimodal,8.0,1024,2
+Laplace,6.0,256,1
+Laplace,6.0,512,1
+Laplace,6.0,768,1
+Laplace,6.0,1024,1
+Laplace,8.0,256,1
+Laplace,8.0,512,1
+Laplace,8.0,768,1
+Laplace,8.0,1024,1

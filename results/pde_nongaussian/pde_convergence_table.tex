@@ -1,0 +1,18 @@
+\begin{table*}[htbp]
+\centering
+\small
+\caption{Grid, time-step, and domain convergence of the non-Gaussian PDE diagnostics ($\varepsilon=0.1$, $u_{0}=0.36$), with the observed convergence order and the independent stationary-state check. Modes: number of local maxima of the initial density, the same on every grid used ($N_{x}\in\{256,512,768,1024\}$, $L\in\{6,8\}$).}
+\label{tab:pde_convergence}
+\begin{tabular}{lclcccccc}
+\toprule
+Initial density & Modes & $(N_x,\Delta t,L)$ & $T_{\mathrm{acc}}$ & $T_{\times}$ & Max excess & $u_{\infty}$ & $\|\rho(T)-\rho^{*}_{\varepsilon}\|_{L^{1}}$ & $|u_\infty-u^{*}_{\varepsilon}|$ \\
+\midrule
+Gaussian & 1 & coarse / ref. / fine & $1.2605$ / $1.2566$ / $1.2557$ & $1.2550$ / $1.2552$ / $1.2553$ & $4.715{\times}10^{-2}$ / $4.757{\times}10^{-2}$ / $4.767{\times}10^{-2}$ & $1.0472$ / $1.0476$ / $1.0477$ & $1.89{\times}10^{-4}$ / $4.72{\times}10^{-5}$ / $1.18{\times}10^{-5}$ & $5.49{\times}10^{-4}$ / $1.37{\times}10^{-4}$ / $3.41{\times}10^{-5}$ \\
+Symmetric bimodal & 2 & coarse / ref. / fine & $1.2581$ / $1.2542$ / $1.2532$ & $1.2526$ / $1.2528$ / $1.2529$ & $4.715{\times}10^{-2}$ / $4.757{\times}10^{-2}$ / $4.767{\times}10^{-2}$ & $1.0472$ / $1.0476$ / $1.0477$ & $1.89{\times}10^{-4}$ / $4.72{\times}10^{-5}$ / $1.18{\times}10^{-5}$ & $5.49{\times}10^{-4}$ / $1.37{\times}10^{-4}$ / $3.41{\times}10^{-5}$ \\
+Asymmetric bimodal & 2 & coarse / ref. / fine & $1.2575$ / $1.2536$ / $1.2526$ & $1.2519$ / $1.2522$ / $1.2523$ & $4.715{\times}10^{-2}$ / $4.757{\times}10^{-2}$ / $4.767{\times}10^{-2}$ & $1.0472$ / $1.0476$ / $1.0477$ & $1.89{\times}10^{-4}$ / $4.72{\times}10^{-5}$ / $1.18{\times}10^{-5}$ & $5.49{\times}10^{-4}$ / $1.37{\times}10^{-4}$ / $3.41{\times}10^{-5}$ \\
+Laplace & 1 & coarse / ref. / fine & $1.2570$ / $1.2532$ / $1.2522$ & $1.2514$ / $1.2518$ / $1.2518$ & $4.715{\times}10^{-2}$ / $4.757{\times}10^{-2}$ / $4.767{\times}10^{-2}$ & $1.0472$ / $1.0476$ / $1.0477$ & $1.89{\times}10^{-4}$ / $4.72{\times}10^{-5}$ / $1.18{\times}10^{-5}$ & $5.49{\times}10^{-4}$ / $1.37{\times}10^{-4}$ / $3.41{\times}10^{-5}$ \\
+\multicolumn{3}{l}{Observed order (all families, $L\in\{6,8\}$)} & $2.00$--$2.02$ & $2.01$--$2.02$ & & & & \\
+\multicolumn{3}{l}{Extrapolated $d_{0}=\lim_{h\to0}(T_{\times}-T_{\mathrm{acc}})$ (estimate $\pm$ uncertainty; per family)} & \multicolumn{2}{c}{$(+0.6\pm3.4)\times10^{-5}$ / $(+0.1\pm2.7)\times10^{-5}$ / $(+1.8\pm2.5)\times10^{-5}$ / $(+0.2\pm2.5)\times10^{-5}$} & & & & \\
+\bottomrule
+\end{tabular}
+\end{table*}

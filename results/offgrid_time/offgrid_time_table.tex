@@ -1,0 +1,18 @@
+\begin{table}[t]
+\centering
+\small
+\caption{Trajectory error on the training-aligned test grid and on a grid shifted by $\Delta t/2 = 0.0316$ (mean $\pm$ 95\% CI over $S=10$ seeds; $S=5$ for Neural ODE variants).}
+\label{tab:offgrid_time}
+\begin{tabular}{lccc}
+\hline
+Model & $E_{\mathrm{traj}}$ (on grid) & $E_{\mathrm{traj}}$ ($t_j+\Delta t/2$) & relative change \\
+\hline
+Direct MLP & $1.268e-07 \pm 2.8e-08$ & $1.164e-07 \pm 2.5e-08$ & -8.1\% \\
+Residual MLP & $4.772e-09 \pm 1.1e-09$ & $5.062e-09 \pm 1.1e-09$ & +6.8\% \\
+PI-Residual, $\lambda=0.1$ & $1.927e-08 \pm 6.8e-09$ & $1.821e-08 \pm 6.3e-09$ & -5.2\% \\
+DeepONet-style & $6.335e-07 \pm 1.1e-07$ & $5.845e-07 \pm 8.2e-08$ & -6.7\% \\
+Neural ODE (full field) & $1.492e-04 \pm 3.4e-04$ & $1.499e-04 \pm 3.4e-04$ & +1.1\% \\
+Residual Neural ODE & $1.069e-06 \pm 3.8e-07$ & $1.084e-06 \pm 3.9e-07$ & +1.4\% \\
+\hline
+\end{tabular}
+\end{table}

@@ -1,0 +1,20 @@
+\begin{table}[t]
+\centering
+\scriptsize
+\caption{Ablation over architecture, residual parameterization, and normalization (mean $\pm$ 95\% CI over $S=10$ seeds).}
+\label{tab:surrogate-ablation}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lcccc}
+\hline
+variant & $E_{\mathrm{traj}}$ & $E_{\mathrm{cross}}$ & $E_{\mathrm{over}}$ & $E_{\mathrm{eq}}$ \\
+\hline
+Small MLP $(32)$ & $2.549e-06 \pm 4.9e-07$ & $9.482e-03 \pm 8.2e-04$ & $2.242e-03 \pm 2.9e-04$ & $1.002e-03 \pm 2.3e-04$ \\
+Medium MLP $(64,64)$ & $1.748e-07 \pm 2.8e-08$ & $2.171e-03 \pm 4.7e-04$ & $5.839e-04 \pm 1.2e-04$ & $3.233e-04 \pm 7.3e-05$ \\
+Residual MLP $(64,64)$ & $8.859e-09 \pm 4.9e-09$ & $3.171e-04 \pm 5.1e-05$ & $7.730e-05 \pm 2.8e-05$ & $5.363e-05 \pm 1.8e-05$ \\
+Large MLP $(128,128)$ & $1.568e-07 \pm 4.2e-08$ & $1.734e-03 \pm 2.5e-04$ & $5.713e-04 \pm 1.1e-04$ & $3.015e-04 \pm 6.6e-05$ \\
+Medium MLP w/o input scaling & $8.849e-08 \pm 2.1e-08$ & $1.878e-03 \pm 2.7e-04$ & $5.405e-04 \pm 9.4e-05$ & $1.721e-04 \pm 4.8e-05$ \\
+Medium MLP w/o target scaling & $2.069e-06 \pm 1.0e-06$ & $7.081e-03 \pm 2.1e-03$ & $2.419e-03 \pm 8.2e-04$ & $1.095e-03 \pm 6.0e-04$ \\
+\hline
+\end{tabular}%
+}
+\end{table}

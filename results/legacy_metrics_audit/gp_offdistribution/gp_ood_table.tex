@@ -1,0 +1,22 @@
+\begin{table}[t]
+\centering
+\scriptsize
+\caption{Gaussian-process baselines on the out-of-distribution regimes of Table~15 (mean $\pm$ 95\% CI over $S=10$ subsample seeds).}
+\label{tab:gp_ood}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{llcccc}
+\hline
+regime & model & $E_{\mathrm{traj}}$ & $E_{\mathrm{cross}}$ & $E_{\mathrm{over}}$ & $E_{\mathrm{eq}}$ \\
+\hline
+Low variance & GP, zero mean & $5.240e-06 \pm 1.8e-06$ & $1.642e-03 \pm 3.6e-04$ & $2.040e-04 \pm 4.1e-04$ & $2.547e-04 \pm 3.9e-04$ \\
+High variance & GP, zero mean & $3.692e-02 \pm 3.2e-02$ & -- & $2.447e-01 \pm 1.7e-01$ & $5.181e-02 \pm 3.3e-02$ \\
+High Fisher strength & GP, zero mean & $1.889e-06 \pm 4.6e-07$ & $1.734e-03 \pm 4.2e-04$ & $9.218e-04 \pm 3.2e-04$ & $8.223e-04 \pm 3.3e-04$ \\
+Longer time & GP, zero mean & $1.415e-02 \pm 1.1e-02$ & -- & $8.076e-02 \pm 4.2e-02$ & $5.199e-02 \pm 1.5e-03$ \\
+Low variance & GP, $u_{\mathrm{OU}}$ prior mean & $5.051e-06 \pm 1.8e-06$ & $1.589e-03 \pm 2.6e-04$ & $1.474e-04 \pm 2.1e-04$ & $1.800e-04 \pm 2.0e-04$ \\
+High variance & GP, $u_{\mathrm{OU}}$ prior mean & $1.062e-02 \pm 5.9e-03$ & -- & $1.605e-01 \pm 6.8e-02$ & $3.546e-02 \pm 1.4e-02$ \\
+High Fisher strength & GP, $u_{\mathrm{OU}}$ prior mean & $2.686e-06 \pm 9.0e-07$ & $1.953e-03 \pm 6.4e-04$ & $1.250e-03 \pm 2.6e-04$ & $4.818e-04 \pm 1.4e-04$ \\
+Longer time & GP, $u_{\mathrm{OU}}$ prior mean & $4.049e-03 \pm 1.4e-03$ & -- & $6.028e-02 \pm 4.5e-02$ & $5.048e-02 \pm 1.6e-03$ \\
+\hline
+\end{tabular}%
+}
+\end{table}

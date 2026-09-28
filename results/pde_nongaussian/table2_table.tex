@@ -1,0 +1,16 @@
+\begin{table}[t]
+\centering
+\small
+\caption{Transient behavior for Gaussian and representative non-Gaussian initial densities ($u_{0}=0.36$) under Fisher-regularized dynamics with $\varepsilon=0.1$. $T_{\mathrm{acc}}$: first crossing of $u=1$; $T_{\times}$: first zero of the cross-dissipation $D_{\times}(t)$ computed from the PDE solution; $u_{\infty}$: variance of the numerically obtained stationary density (long-time integration, \ref{app:pde_numerics}); final error: $|u(T_{\max})-u_{\infty}|$. Reference resolution $N_{x}=512$, $L=6$.}
+\label{tab:nongaussian_results}
+\begin{tabular}{lccccc}
+\toprule
+Initial density & $T_{\mathrm{acc}}$ & $T_{\times}$ & Max excess & $u_{\infty}$ & Final error \\
+\midrule
+Gaussian & $1.2566$ & $1.2552$ & $4.757{\times}10^{-2}$ & $1.0476$ & $1.89{\times}10^{-5}$ \\
+Symmetric bimodal & $1.2542$ & $1.2528$ & $4.757{\times}10^{-2}$ & $1.0476$ & $1.88{\times}10^{-5}$ \\
+Asymmetric bimodal & $1.2536$ & $1.2522$ & $4.757{\times}10^{-2}$ & $1.0476$ & $1.88{\times}10^{-5}$ \\
+Laplace & $1.2532$ & $1.2518$ & $4.757{\times}10^{-2}$ & $1.0476$ & $1.88{\times}10^{-5}$ \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -1,0 +1,10 @@
+# Exact versions that produced the published results
+# (Python 3.12.3, Ubuntu 24.04; torch 2.8.0 was the CUDA 12.6 build, the CPU build gives the same code paths).
+numpy==2.4.4
+scipy==1.17.1
+pandas==3.0.3
+scikit-learn==1.9.1
+matplotlib==3.11.2
+torch==2.8.0
+torchdiffeq==0.2.5
+pytest==9.1.1

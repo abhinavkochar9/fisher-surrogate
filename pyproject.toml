@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fisher-surrogate"
+version = "1.0.0"
+description = "Mechanism-preserving neural surrogates for Fisher-regularized probability flows (Neurocomputing NEUCOM-D-26-14165)"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+authors = [
+  {name = "Michael Farmer"},
+  {name = "Abhinav Kochar"},
+  {name = "Yugyung Lee", email = "leeyu@umkc.edu"},
+]
+dependencies = [
+  "numpy>=1.23",
+  "scipy>=1.9",
+  "pandas>=1.5",
+  "scikit-learn>=1.2",
+  "matplotlib>=3.6",
+]
+
+[project.optional-dependencies]
+torch = ["torch>=2.0", "torchdiffeq>=0.2.3"]
+dev = ["pytest", "jupyter"]
+
+[tool.setuptools.packages.find]
+include = ["fisher_surrogate*"]

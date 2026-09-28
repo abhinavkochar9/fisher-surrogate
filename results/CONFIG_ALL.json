@@ -1,0 +1,1428 @@
+{
+  "deeponet/deeponet_config.json": {
+    "args": {
+      "quick": false,
+      "n_seeds": null,
+      "out": null,
+      "device": null,
+      "n_pairs": 300,
+      "n_time": 80,
+      "legacy_metrics": false,
+      "p": 64,
+      "physics_lambda": 0.1
+    },
+    "data": {
+      "n_pairs": 300,
+      "n_time": 80,
+      "t_max": 5.0,
+      "u0_range": [
+        0.2,
+        2.5
+      ],
+      "eps_range": [
+        0.01,
+        0.5
+      ],
+      "data_seed": 123,
+      "split_seed": 999,
+      "train_frac": 0.7,
+      "val_frac": 0.15,
+      "integrator": "rk4",
+      "extra": {}
+    },
+    "train": {
+      "hidden": [
+        64,
+        64
+      ],
+      "activation": "tanh",
+      "epochs": 1500,
+      "batch_size": 512,
+      "lr": 0.002,
+      "patience": 150,
+      "device": "cuda"
+    },
+    "n_seeds": 10,
+    "metrics": {
+      "cross_missing": "penalize",
+      "over_mode": "max",
+      "refine": true
+    }
+  },
+  "eps_ablation/eps_ablation_config.json": {
+    "args": {
+      "quick": false,
+      "n_seeds": null,
+      "out": null,
+      "device": null,
+      "n_pairs": 300,
+      "n_time": 80,
+      "legacy_metrics": false,
+      "n_extra_pairs": 120
+    },
+    "data": {
+      "n_pairs": 300,
+      "n_time": 80,
+      "t_max": 5.0,
+      "u0_range": [
+        0.2,
+        2.5
+      ],
+      "eps_range": [
+        0.01,
+        0.5
+      ],
+      "data_seed": 123,
+      "split_seed": 999,
+      "train_frac": 0.7,
+      "val_frac": 0.15,
+      "integrator": "rk4",
+      "extra": {}
+    },
+    "train": {
+      "hidden": [
+        64,
+        64
+      ],
+      "activation": "tanh",
+      "epochs": 1500,
+      "batch_size": 512,
+      "lr": 0.002,
+      "patience": 150,
+      "device": "cuda"
+    },
+    "n_seeds": 10,
+    "metrics": {
+      "cross_missing": "penalize",
+      "over_mode": "max",
+      "refine": true
+    },
+    "n_extra": 120
+  },
+  "feature_matched/feature_matched_config.json": {
+    "args": {
+      "quick": false,
+      "n_seeds": null,
+      "out": null,
+      "device": null,
+      "n_pairs": 300,
+      "n_time": 80,
+      "legacy_metrics": false,
+      "node_seeds": 5,
+      "node_tol": "standard",
+      "gp_sub": 2000,
+      "gp_seeds": 10,
+      "skip_node": false
+    },
+    "data": {
+      "n_pairs": 300,
+      "n_time": 80,
+      "t_max": 5.0,
+      "u0_range": [
+        0.2,
+        2.5
+      ],
+      "eps_range": [
+        0.01,
+        0.5
+      ],
+      "data_seed": 123,
+      "split_seed": 999,
+      "train_frac": 0.7,
+      "val_frac": 0.15,
+      "integrator": "rk4",
+      "extra": {}
+    },
+    "train": {
+      "hidden": [
+        64,
+        64
+      ],
+      "activation": "tanh",
+      "epochs": 1500,
+      "batch_size": 512,
+      "lr": 0.002,
+      "patience": 150,
+      "device": "cuda"
+    },
+    "n_seeds": 10,
+    "metrics": {
+      "cross_missing": "penalize",
+      "over_mode": "max",
+      "refine": true
+    },
+    "node_seeds": 5,
+    "node_tol": [
+      1e-06,
+      1e-08
+    ],
+    "gp_sub": 2000,
+    "gp_seeds": 10,
+    "provenance": "GP rows computed separately at S=10 subsample seeds with the same code (fit_gp, random_state = seed), which is exactly what this script writes with --gp-seeds 10 (the default); GP training times from a run alone on the otherwise idle machine (2026-09-28). All other rows from the 2026-09-12 run."
+  },
+  "gp_offdistribution/gp_offdistribution_config.json": {
+    "args": {
+      "quick": false,
+      "n_seeds": null,
+      "out": "results/gp_offdistribution",
+      "device": null,
+      "n_pairs": 300,
+      "n_time": 80,
+      "legacy_metrics": false,
+      "n_ood_pairs": 120,
+      "transfer_pairs": 400,
+      "gp_sub": 2000,
+      "gp_seeds": 10,
+      "axes": [
+        "ood",
+        "transfer"
+      ]
+    },
+    "data": {
+      "n_pairs": 300,
+      "n_time": 80,
+      "t_max": 5.0,
+      "u0_range": [
+        0.2,
+        2.5
+      ],
+      "eps_range": [
+        0.01,
+        0.5
+      ],
+      "data_seed": 123,
+      "split_seed": 999,
+      "train_frac": 0.7,
+      "val_frac": 0.15,
+      "integrator": "rk4",
+      "extra": {}
+    },
+    "train": {
+      "hidden": [
+        64,
+        64
+      ],
+      "activation": "tanh",
+      "epochs": 1500,
+      "batch_size": 512,
+      "lr": 0.002,
+      "patience": 150,
+      "device": "cuda"
+    },
+    "n_seeds": 10,
+    "metrics": {
+      "cross_missing": "penalize",
+      "over_mode": "max",
+      "refine": true
+    },
+    "gp_sub": 2000,
+    "gp_seeds": 10,
+    "n_ood_pairs": 120,
+    "transfer_pairs": 400,
+    "provenance": "ood and transfer axes run as separate invocations with identical settings; merged here."
+  },
+  "imperfect_baseline/imperfect_baseline_config.json": {
+    "args": {
+      "quick": false,
+      "n_seeds": null,
+      "out": "results/imperfect_baseline",
+      "device": null,
+      "n_pairs": 300,
+      "n_time": 80,
+      "legacy_metrics": false,
+      "axes": [
+        "A",
+        "B",
+        "C"
+      ],
+      "n_pde_pairs": 160,
+      "pde_nx": 768,
+      "ratio_range": [
+        0.0,
+        1.5
+      ]
+    },
+    "data": {
+      "n_pairs": 300,
+      "n_time": 80,
+      "t_max": 5.0,
+      "u0_range": [
+        0.2,
+        2.5
+      ],
+      "eps_range": [
+        0.01,
+        0.5
+      ],
+      "data_seed": 123,
+      "split_seed": 999,
+      "train_frac": 0.7,
+      "val_frac": 0.15,
+      "integrator": "rk4",
+      "extra": {}
+    },
+    "train": {
+      "hidden": [
+        64,
+        64
+      ],
+      "activation": "tanh",
+      "epochs": 1500,
+      "batch_size": 512,
+      "lr": 0.002,
+      "patience": 150,
+      "device": "cuda"
+    },
+    "n_seeds": 10,
+    "metrics": {
+      "cross_missing": "penalize",
+      "over_mode": "max",
+      "refine": true
+    },
+    "kappas": [
+      0.5,
+      0.8,
+      1.0,
+      1.2,
+      2.0
+    ],
+    "euler_steps": [
+      0.01,
+      0.05,
+      0.1,
+      0.25,
+      0.5
+    ],
+    "provenance": "(A) regenerated 2026-09-26 with the final defaults (--pde-nx 768 --ratio-range 0 1.5); (B) and (C) from the 2026-09-12 run, unchanged (they do not depend on these settings)."
+  },
+  "legacy_metrics_audit/deeponet/deeponet_config.json": {
+    "args": {
+      "quick": false,
+      "n_seeds": null,
+      "out": "results/legacy_metrics_audit/deeponet",
+      "device": null,
+      "n_pairs": 300,
+      "n_time": 80,
+      "legacy_metrics": true,
+      "p": 64,
+      "physics_lambda": 0.1
+    },
+    "data": {
+      "n_pairs": 300,
+      "n_time": 80,
+      "t_max": 5.0,
+      "u0_range": [
+        0.2,
+        2.5
+      ],
+      "eps_range": [
+        0.01,
+        0.5
+      ],
+      "data_seed": 123,
+      "split_seed": 999,
+      "train_frac": 0.7,
+      "val_frac": 0.15,
+      "integrator": "rk4",
+      "extra": {}
+    },
+    "train": {
+      "hidden": [
+        64,
+        64
+      ],
+      "activation": "tanh",
+      "epochs": 1500,
+      "batch_size": 512,
+      "lr": 0.002,
+      "patience": 150,
+      "device": "cuda"
+    },
+    "n_seeds": 10,
+    "metrics": {
+      "cross_missing": "penalize",
+      "over_mode": "eq_clipped",
+      "refine": false
+    }
+  },
+  "legacy_metrics_audit/eps_ablation/eps_ablation_config.json": {
+    "args": {
+      "quick": false,
+      "n_seeds": null,
+      "out": "results/legacy_metrics_audit/eps_ablation",
+      "device": null,
+      "n_pairs": 300,
+      "n_time": 80,
+      "legacy_metrics": true,
+      "n_extra_pairs": 120
+    },
+    "data": {
+      "n_pairs": 300,
+      "n_time": 80,
+      "t_max": 5.0,
+      "u0_range": [
+        0.2,
+        2.5
+      ],
+      "eps_range": [
+        0.01,
+        0.5
+      ],
+      "data_seed": 123,
+      "split_seed": 999,
+      "train_frac": 0.7,
+      "val_frac": 0.15,
+      "integrator": "rk4",
+      "extra": {}
+    },
+    "train": {
+      "hidden": [
+        64,
+        64
+      ],
+      "activation": "tanh",
+      "epochs": 1500,
+      "batch_size": 512,
+      "lr": 0.002,
+      "patience": 150,
+      "device": "cuda"
+    },
+    "n_seeds": 10,
+    "metrics": {
+      "cross_missing": "penalize",
+      "over_mode": "eq_clipped",
+      "refine": false
+    },
+    "n_extra": 120
+  },
+  "legacy_metrics_audit/feature_matched/feature_matched_config.json": {
+    "args": {
+      "quick": false,
+      "n_seeds": null,
+      "out": "results/legacy_metrics_audit/feature_matched",
+      "device": null,
+      "n_pairs": 300,
+      "n_time": 80,
+      "legacy_metrics": true,
+      "node_seeds": 5,
+      "node_tol": "standard",
+      "gp_sub": 2000,
+      "gp_seeds": 10,
+      "skip_node": false
+    },
+    "data": {
+      "n_pairs": 300,
+      "n_time": 80,
+      "t_max": 5.0,
+      "u0_range": [
+        0.2,
+        2.5
+      ],
+      "eps_range": [
+        0.01,
+        0.5
+      ],
+      "data_seed": 123,
+      "split_seed": 999,
+      "train_frac": 0.7,
+      "val_frac": 0.15,
+      "integrator": "rk4",
+      "extra": {}
+    },
+    "train": {
+      "hidden": [
+        64,
+        64
+      ],
+      "activation": "tanh",
+      "epochs": 1500,
+      "batch_size": 512,
+      "lr": 0.002,
+      "patience": 150,
+      "device": "cuda"
+    },
+    "n_seeds": 10,
+    "metrics": {
+      "cross_missing": "penalize",
+      "over_mode": "eq_clipped",
+      "refine": false
+    },
+    "node_seeds": 5,
+    "node_tol": [
+      1e-06,
+      1e-08
+    ],
+    "gp_sub": 2000,
+    "gp_seeds": 10,
+    "provenance": "GP rows computed separately at S=10 subsample seeds with the same code (fit_gp, random_state = seed), which is exactly what this script writes with --gp-seeds 10 (the default); GP training times from a run alone on the otherwise idle machine (2026-09-28). All other rows from the 2026-09-12 run."
+  },
+  "legacy_metrics_audit/gp_offdistribution/gp_offdistribution_config.json": {
+    "args": {
+      "quick": false,
+      "n_seeds": null,
+      "out": "results/legacy_metrics_audit/gp_offdistribution",
+      "device": null,
+      "n_pairs": 300,
+      "n_time": 80,
+      "legacy_metrics": true,
+      "n_ood_pairs": 120,
+      "transfer_pairs": 400,
+      "gp_sub": 2000,
+      "gp_seeds": 10,
+      "axes": [
+        "ood",
+        "transfer"
+      ]
+    },
+    "data": {
+      "n_pairs": 300,
+      "n_time": 80,
+      "t_max": 5.0,
+      "u0_range": [
+        0.2,
+        2.5
+      ],
+      "eps_range": [
+        0.01,
+        0.5
+      ],
+      "data_seed": 123,
+      "split_seed": 999,
+      "train_frac": 0.7,
+      "val_frac": 0.15,
+      "integrator": "rk4",
+      "extra": {}
+    },
+    "train": {
+      "hidden": [
+        64,
+        64
+      ],
+      "activation": "tanh",
+      "epochs": 1500,
+      "batch_size": 512,
+      "lr": 0.002,
+      "patience": 150,
+      "device": "cuda"
+    },
+    "n_seeds": 10,
+    "metrics": {
+      "cross_missing": "penalize",
+      "over_mode": "eq_clipped",
+      "refine": false
+    },
+    "gp_sub": 2000,
+    "gp_seeds": 10,
+    "n_ood_pairs": 120,
+    "transfer_pairs": 400,
+    "provenance": "ood and transfer axes run as separate invocations with identical settings; merged here."
+  },
+  "legacy_metrics_audit/neural_ode_gp/neural_ode_gp_config.json": {
+    "args": {
+      "quick": false,
+      "n_seeds": null,
+      "out": "results/legacy_metrics_audit/neural_ode_gp",
+      "device": null,
+      "n_pairs": 300,
+      "n_time": 80,
+      "legacy_metrics": true,
+      "node_seeds": 5,
+      "gp_sub": 2000,
+      "gp_seeds": 10
+    },
+    "data": {
+      "n_pairs": 300,
+      "n_time": 80,
+      "t_max": 5.0,
+      "u0_range": [
+        0.2,
+        2.5
+      ],
+      "eps_range": [
+        0.01,
+        0.5
+      ],
+      "data_seed": 123,
+      "split_seed": 999,
+      "train_frac": 0.7,
+      "val_frac": 0.15,
+      "integrator": "rk4",
+      "extra": {}
+    },
+    "train": {
+      "hidden": [
+        64,
+        64
+      ],
+      "activation": "tanh",
+      "epochs": 1500,
+      "batch_size": 512,
+      "lr": 0.002,
+      "patience": 150,
+      "device": "cuda"
+    },
+    "n_seeds": 10,
+    "metrics": {
+      "cross_missing": "penalize",
+      "over_mode": "eq_clipped",
+      "refine": false
+    },
+    "node_seeds": 5,
+    "tolerances": {
+      "standard": [
+        1e-06,
+        1e-08
+      ],
+      "tight": [
+        1e-08,
+        1e-10
+      ]
+    },
+    "gp_sub": 2000,
+    "gp_seeds": 10,
+    "provenance": "GP rows computed separately at S=10 subsample seeds with the same code (fit_gp, random_state = seed), which is exactly what this script writes with --gp-seeds 10 (the default); GP training times from a run alone on the otherwise idle machine (2026-09-28). All other rows from the 2026-09-12 run."
+  },
+  "legacy_metrics_audit/noise_sensitivity/noise_sensitivity_config.json": {
+    "args": {
+      "quick": false,
+      "n_seeds": null,
+      "out": "results/legacy_metrics_audit/noise_sensitivity",
+      "device": null,
+      "n_pairs": 300,
+      "n_time": 80,
+      "legacy_metrics": true,
+      "levels": [
+        0.0,
+        0.001,
+        0.01,
+        0.05
+      ]
+    },
+    "data": {
+      "n_pairs": 300,
+      "n_time": 80,
+      "t_max": 5.0,
+      "u0_range": [
+        0.2,
+        2.5
+      ],
+      "eps_range": [
+        0.01,
+        0.5
+      ],
+      "data_seed": 123,
+      "split_seed": 999,
+      "train_frac": 0.7,
+      "val_frac": 0.15,
+      "integrator": "rk4",
+      "extra": {}
+    },
+    "train": {
+      "hidden": [
+        64,
+        64
+      ],
+      "activation": "tanh",
+      "epochs": 1500,
+      "batch_size": 512,
+      "lr": 0.002,
+      "patience": 150,
+      "device": "cuda"
+    },
+    "n_seeds": 10,
+    "metrics": {
+      "cross_missing": "penalize",
+      "over_mode": "eq_clipped",
+      "refine": false
+    }
+  },
+  "legacy_metrics_audit/ood_generalization/ood_generalization_config.json": {
+    "args": {
+      "quick": false,
+      "n_seeds": null,
+      "out": "results/legacy_metrics_audit/ood_generalization",
+      "device": null,
+      "n_pairs": 300,
+      "n_time": 80,
+      "legacy_metrics": true,
+      "n_ood_pairs": 120
+    },
+    "data": {
+      "n_pairs": 300,
+      "n_time": 80,
+      "t_max": 5.0,
+      "u0_range": [
+        0.2,
+        2.5
+      ],
+      "eps_range": [
+        0.01,
+        0.5
+      ],
+      "data_seed": 123,
+      "split_seed": 999,
+      "train_frac": 0.7,
+      "val_frac": 0.15,
+      "integrator": "rk4",
+      "extra": {}
+    },
+    "train": {
+      "hidden": [
+        64,
+        64
+      ],
+      "activation": "tanh",
+      "epochs": 1500,
+      "batch_size": 512,
+      "lr": 0.002,
+      "patience": 150,
+      "device": "cuda"
+    },
+    "n_seeds": 10,
+    "metrics": {
+      "cross_missing": "penalize",
+      "over_mode": "eq_clipped",
+      "refine": false
+    }
+  },
+  "legacy_metrics_audit/physics_informed/physics_informed_config.json": {
+    "args": {
+      "quick": false,
+      "n_seeds": null,
+      "out": "results/legacy_metrics_audit/physics_informed",
+      "device": null,
+      "n_pairs": 300,
+      "n_time": 80,
+      "legacy_metrics": true,
+      "lambdas": [
+        0.01,
+        0.1,
+        1.0
+      ]
+    },
+    "data": {
+      "n_pairs": 300,
+      "n_time": 80,
+      "t_max": 5.0,
+      "u0_range": [
+        0.2,
+        2.5
+      ],
+      "eps_range": [
+        0.01,
+        0.5
+      ],
+      "data_seed": 123,
+      "split_seed": 999,
+      "train_frac": 0.7,
+      "val_frac": 0.15,
+      "integrator": "rk4",
+      "extra": {}
+    },
+    "train": {
+      "hidden": [
+        64,
+        64
+      ],
+      "activation": "tanh",
+      "epochs": 1500,
+      "batch_size": 512,
+      "lr": 0.002,
+      "patience": 150,
+      "device": "cuda"
+    },
+    "n_seeds": 10,
+    "metrics": {
+      "cross_missing": "penalize",
+      "over_mode": "eq_clipped",
+      "refine": false
+    }
+  },
+  "legacy_metrics_audit/pi_gradient_analysis/pi_gradient_config.json": {
+    "args": {
+      "quick": false,
+      "n_seeds": null,
+      "out": "results/legacy_metrics_audit/pi_gradient_analysis",
+      "device": null,
+      "n_pairs": 80,
+      "n_time": 80,
+      "legacy_metrics": true,
+      "n_collocation": 200,
+      "de_seeds": 3
+    },
+    "data": {
+      "n_pairs": 80,
+      "n_time": 80,
+      "t_max": 5.0,
+      "u0_range": [
+        0.2,
+        2.5
+      ],
+      "eps_range": [
+        0.01,
+        0.5
+      ],
+      "data_seed": 123,
+      "split_seed": 999,
+      "train_frac": 0.7,
+      "val_frac": 0.15,
+      "integrator": "rk4",
+      "extra": {}
+    },
+    "train": {
+      "hidden": [
+        64,
+        64
+      ],
+      "activation": "tanh",
+      "epochs": 1500,
+      "batch_size": 512,
+      "lr": 0.002,
+      "patience": 150,
+      "device": "cuda"
+    },
+    "n_seeds": 5,
+    "metrics": {
+      "cross_missing": "penalize",
+      "over_mode": "eq_clipped",
+      "refine": false
+    },
+    "lambdas": [
+      0.0,
+      0.01,
+      0.1,
+      1.0
+    ]
+  },
+  "legacy_metrics_audit/sklearn_tables/sklearn_tables_config.json": {
+    "quick": false,
+    "n_seeds": 10,
+    "out": "results/legacy_metrics_audit/sklearn_tables",
+    "device": null,
+    "preset": "generalization",
+    "legacy_metrics": true,
+    "n_pairs": 600,
+    "n_time": 201,
+    "metrics": {
+      "cross_missing": "exclude",
+      "over_mode": "max",
+      "refine": false
+    },
+    "grid_resolution": 0.025
+  },
+  "legacy_metrics_audit/transfer_system/transfer_system_config.json": {
+    "args": {
+      "quick": false,
+      "n_seeds": null,
+      "out": "results/legacy_metrics_audit/transfer_system",
+      "device": null,
+      "n_pairs": 400,
+      "n_time": 80,
+      "legacy_metrics": true,
+      "node_seeds": 5,
+      "skip_node": false
+    },
+    "data": {
+      "n_pairs": 400,
+      "n_time": 80,
+      "t_max": 5.0,
+      "u0_range": [
+        0.2,
+        2.5
+      ],
+      "eps_range": [
+        0.01,
+        0.5
+      ],
+      "data_seed": 123,
+      "split_seed": 999,
+      "train_frac": 0.7,
+      "val_frac": 0.15,
+      "integrator": "rk4",
+      "extra": {}
+    },
+    "train": {
+      "hidden": [
+        64,
+        64
+      ],
+      "activation": "tanh",
+      "epochs": 1500,
+      "batch_size": 512,
+      "lr": 0.002,
+      "patience": 150,
+      "device": "cuda"
+    },
+    "n_seeds": 10,
+    "metrics": {
+      "cross_missing": "penalize",
+      "over_mode": "eq_clipped",
+      "refine": false
+    },
+    "overshoot_stats": {
+      "n_pairs": 60,
+      "n_overshoot": 51,
+      "max_peak_time": 3.011,
+      "max_overshoot": 0.46586647199435305
+    },
+    "node_seeds": 5
+  },
+  "mechanism_loss/mechanism_loss_config.json": {
+    "args": {
+      "quick": false,
+      "n_seeds": null,
+      "out": null,
+      "device": null,
+      "n_pairs": 300,
+      "n_time": 80,
+      "legacy_metrics": false,
+      "betas": [
+        0.0,
+        0.1,
+        1.0
+      ]
+    },
+    "data": {
+      "n_pairs": 300,
+      "n_time": 80,
+      "t_max": 5.0,
+      "u0_range": [
+        0.2,
+        2.5
+      ],
+      "eps_range": [
+        0.01,
+        0.5
+      ],
+      "data_seed": 123,
+      "split_seed": 999,
+      "train_frac": 0.7,
+      "val_frac": 0.15,
+      "integrator": "rk4",
+      "extra": {}
+    },
+    "train": {
+      "hidden": [
+        64,
+        64
+      ],
+      "activation": "tanh",
+      "epochs": 1500,
+      "batch_size": 512,
+      "lr": 0.002,
+      "patience": 150,
+      "device": "cuda"
+    },
+    "n_seeds": 10,
+    "metrics": {
+      "cross_missing": "penalize",
+      "over_mode": "max",
+      "refine": true
+    }
+  },
+  "neural_ode_gp/neural_ode_gp_config.json": {
+    "args": {
+      "quick": false,
+      "n_seeds": null,
+      "out": null,
+      "device": null,
+      "n_pairs": 300,
+      "n_time": 80,
+      "legacy_metrics": false,
+      "node_seeds": 5,
+      "gp_sub": 2000,
+      "gp_seeds": 10
+    },
+    "data": {
+      "n_pairs": 300,
+      "n_time": 80,
+      "t_max": 5.0,
+      "u0_range": [
+        0.2,
+        2.5
+      ],
+      "eps_range": [
+        0.01,
+        0.5
+      ],
+      "data_seed": 123,
+      "split_seed": 999,
+      "train_frac": 0.7,
+      "val_frac": 0.15,
+      "integrator": "rk4",
+      "extra": {}
+    },
+    "train": {
+      "hidden": [
+        64,
+        64
+      ],
+      "activation": "tanh",
+      "epochs": 1500,
+      "batch_size": 512,
+      "lr": 0.002,
+      "patience": 150,
+      "device": "cuda"
+    },
+    "n_seeds": 10,
+    "metrics": {
+      "cross_missing": "penalize",
+      "over_mode": "max",
+      "refine": true
+    },
+    "node_seeds": 5,
+    "tolerances": {
+      "standard": [
+        1e-06,
+        1e-08
+      ],
+      "tight": [
+        1e-08,
+        1e-10
+      ]
+    },
+    "gp_sub": 2000,
+    "gp_seeds": 10,
+    "provenance": "GP rows computed separately at S=10 subsample seeds with the same code (fit_gp, random_state = seed), which is exactly what this script writes with --gp-seeds 10 (the default); GP training times from a run alone on the otherwise idle machine (2026-09-28). All other rows from the 2026-09-12 run."
+  },
+  "noise_sensitivity/noise_sensitivity_config.json": {
+    "args": {
+      "quick": false,
+      "n_seeds": null,
+      "out": null,
+      "device": null,
+      "n_pairs": 300,
+      "n_time": 80,
+      "legacy_metrics": false,
+      "levels": [
+        0.0,
+        0.001,
+        0.01,
+        0.05
+      ]
+    },
+    "data": {
+      "n_pairs": 300,
+      "n_time": 80,
+      "t_max": 5.0,
+      "u0_range": [
+        0.2,
+        2.5
+      ],
+      "eps_range": [
+        0.01,
+        0.5
+      ],
+      "data_seed": 123,
+      "split_seed": 999,
+      "train_frac": 0.7,
+      "val_frac": 0.15,
+      "integrator": "rk4",
+      "extra": {}
+    },
+    "train": {
+      "hidden": [
+        64,
+        64
+      ],
+      "activation": "tanh",
+      "epochs": 1500,
+      "batch_size": 512,
+      "lr": 0.002,
+      "patience": 150,
+      "device": "cuda"
+    },
+    "n_seeds": 10,
+    "metrics": {
+      "cross_missing": "penalize",
+      "over_mode": "max",
+      "refine": true
+    }
+  },
+  "offgrid_time/offgrid_time_config.json": {
+    "args": {
+      "quick": false,
+      "n_seeds": null,
+      "out": "results/offgrid_time",
+      "device": null,
+      "n_pairs": 300,
+      "n_time": 80,
+      "legacy_metrics": false,
+      "node_seeds": 5
+    },
+    "data": {
+      "n_pairs": 300,
+      "n_time": 80,
+      "t_max": 5.0,
+      "u0_range": [
+        0.2,
+        2.5
+      ],
+      "eps_range": [
+        0.01,
+        0.5
+      ],
+      "data_seed": 123,
+      "split_seed": 999,
+      "train_frac": 0.7,
+      "val_frac": 0.15,
+      "integrator": "rk4",
+      "extra": {}
+    },
+    "train": {
+      "hidden": [
+        64,
+        64
+      ],
+      "activation": "tanh",
+      "epochs": 1500,
+      "batch_size": 512,
+      "lr": 0.002,
+      "patience": 150,
+      "device": "cuda"
+    },
+    "n_seeds": 10,
+    "metrics": {
+      "cross_missing": "penalize",
+      "over_mode": "max",
+      "refine": true
+    },
+    "dt": 0.06329113924050633
+  },
+  "ood_generalization/ood_generalization_config.json": {
+    "args": {
+      "quick": false,
+      "n_seeds": null,
+      "out": null,
+      "device": null,
+      "n_pairs": 300,
+      "n_time": 80,
+      "legacy_metrics": false,
+      "n_ood_pairs": 120
+    },
+    "data": {
+      "n_pairs": 300,
+      "n_time": 80,
+      "t_max": 5.0,
+      "u0_range": [
+        0.2,
+        2.5
+      ],
+      "eps_range": [
+        0.01,
+        0.5
+      ],
+      "data_seed": 123,
+      "split_seed": 999,
+      "train_frac": 0.7,
+      "val_frac": 0.15,
+      "integrator": "rk4",
+      "extra": {}
+    },
+    "train": {
+      "hidden": [
+        64,
+        64
+      ],
+      "activation": "tanh",
+      "epochs": 1500,
+      "batch_size": 512,
+      "lr": 0.002,
+      "patience": 150,
+      "device": "cuda"
+    },
+    "n_seeds": 10,
+    "metrics": {
+      "cross_missing": "penalize",
+      "over_mode": "max",
+      "refine": true
+    }
+  },
+  "pde_nongaussian/pde_nongaussian_config.json": {
+    "quick": false,
+    "n_seeds": null,
+    "out": "results/pde_nongaussian",
+    "device": null,
+    "eps": 0.1,
+    "u0": 0.36,
+    "t_max": 5.0,
+    "t_long": 20.0,
+    "n_out": 501,
+    "rtol": 1e-08,
+    "atol": 1e-11,
+    "families": [
+      "Gaussian",
+      "Symmetric bimodal",
+      "Asymmetric bimodal",
+      "Laplace"
+    ],
+    "no_refinement": false,
+    "levels": {
+      "coarse": [
+        256,
+        0.0002
+      ],
+      "ref.": [
+        512,
+        0.0001
+      ],
+      "fine": [
+        1024,
+        5e-05
+      ]
+    },
+    "domains": [
+      6.0,
+      8.0
+    ],
+    "density_parameters": {
+      "Gaussian": {
+        "u0": 0.36
+      },
+      "Symmetric bimodal": {
+        "a": 0.5,
+        "sigma2": 0.10999999999999999
+      },
+      "Asymmetric bimodal": {
+        "w": 0.3,
+        "a1": 0.7424621202458748,
+        "sigma1_2": 0.12374999999999997,
+        "a2": 0.31819805153394637,
+        "sigma2_2": 0.12374999999999997,
+        "d_over_sigma": 3.0151134457776365
+      },
+      "Laplace": {
+        "b": 0.4242640687119285
+      }
+    }
+  },
+  "physics_informed/physics_informed_config.json": {
+    "args": {
+      "quick": false,
+      "n_seeds": null,
+      "out": null,
+      "device": null,
+      "n_pairs": 300,
+      "n_time": 80,
+      "legacy_metrics": false,
+      "lambdas": [
+        0.01,
+        0.1,
+        1.0
+      ]
+    },
+    "data": {
+      "n_pairs": 300,
+      "n_time": 80,
+      "t_max": 5.0,
+      "u0_range": [
+        0.2,
+        2.5
+      ],
+      "eps_range": [
+        0.01,
+        0.5
+      ],
+      "data_seed": 123,
+      "split_seed": 999,
+      "train_frac": 0.7,
+      "val_frac": 0.15,
+      "integrator": "rk4",
+      "extra": {}
+    },
+    "train": {
+      "hidden": [
+        64,
+        64
+      ],
+      "activation": "tanh",
+      "epochs": 1500,
+      "batch_size": 512,
+      "lr": 0.002,
+      "patience": 150,
+      "device": "cuda"
+    },
+    "n_seeds": 10,
+    "metrics": {
+      "cross_missing": "penalize",
+      "over_mode": "max",
+      "refine": true
+    }
+  },
+  "pi_gradient_analysis/pi_gradient_config.json": {
+    "args": {
+      "quick": false,
+      "n_seeds": null,
+      "out": null,
+      "device": null,
+      "n_pairs": 80,
+      "n_time": 80,
+      "legacy_metrics": false,
+      "n_collocation": 200,
+      "de_seeds": 3
+    },
+    "data": {
+      "n_pairs": 80,
+      "n_time": 80,
+      "t_max": 5.0,
+      "u0_range": [
+        0.2,
+        2.5
+      ],
+      "eps_range": [
+        0.01,
+        0.5
+      ],
+      "data_seed": 123,
+      "split_seed": 999,
+      "train_frac": 0.7,
+      "val_frac": 0.15,
+      "integrator": "rk4",
+      "extra": {}
+    },
+    "train": {
+      "hidden": [
+        64,
+        64
+      ],
+      "activation": "tanh",
+      "epochs": 1500,
+      "batch_size": 512,
+      "lr": 0.002,
+      "patience": 150,
+      "device": "cuda"
+    },
+    "n_seeds": 5,
+    "metrics": {
+      "cross_missing": "penalize",
+      "over_mode": "max",
+      "refine": true
+    },
+    "lambdas": [
+      0.0,
+      0.01,
+      0.1,
+      1.0
+    ]
+  },
+  "pilot_sweep/pilot_sweep_config.json": {
+    "args": {
+      "quick": false,
+      "n_seeds": null,
+      "out": null,
+      "device": null,
+      "n_pairs": 300,
+      "n_time": 80,
+      "legacy_metrics": false
+    },
+    "data": {
+      "n_pairs": 300,
+      "n_time": 80,
+      "t_max": 5.0,
+      "u0_range": [
+        0.2,
+        2.5
+      ],
+      "eps_range": [
+        0.01,
+        0.5
+      ],
+      "data_seed": 123,
+      "split_seed": 999,
+      "train_frac": 0.7,
+      "val_frac": 0.15,
+      "integrator": "rk4",
+      "extra": {}
+    },
+    "train": {
+      "hidden": [
+        64,
+        64
+      ],
+      "activation": "tanh",
+      "epochs": 1500,
+      "batch_size": 512,
+      "lr": 0.002,
+      "patience": 150,
+      "device": "cuda"
+    },
+    "n_seeds": 3,
+    "metrics": {
+      "cross_missing": "penalize",
+      "over_mode": "max",
+      "refine": true
+    }
+  },
+  "sklearn_tables/sklearn_tables_config.json": {
+    "quick": false,
+    "n_seeds": 10,
+    "out": null,
+    "device": null,
+    "preset": "generalization",
+    "n_pairs": 600,
+    "n_time": 201,
+    "metrics": {
+      "cross_missing": "penalize",
+      "over_mode": "max",
+      "refine": true
+    },
+    "grid_resolution": 0.025
+  },
+  "transfer_system/transfer_system_config.json": {
+    "args": {
+      "quick": false,
+      "n_seeds": null,
+      "out": null,
+      "device": null,
+      "n_pairs": 400,
+      "n_time": 80,
+      "legacy_metrics": false,
+      "node_seeds": 5,
+      "skip_node": false
+    },
+    "data": {
+      "n_pairs": 400,
+      "n_time": 80,
+      "t_max": 5.0,
+      "u0_range": [
+        0.2,
+        2.5
+      ],
+      "eps_range": [
+        0.01,
+        0.5
+      ],
+      "data_seed": 123,
+      "split_seed": 999,
+      "train_frac": 0.7,
+      "val_frac": 0.15,
+      "integrator": "rk4",
+      "extra": {}
+    },
+    "train": {
+      "hidden": [
+        64,
+        64
+      ],
+      "activation": "tanh",
+      "epochs": 1500,
+      "batch_size": 512,
+      "lr": 0.002,
+      "patience": 150,
+      "device": "cuda"
+    },
+    "n_seeds": 10,
+    "metrics": {
+      "cross_missing": "penalize",
+      "over_mode": "max",
+      "refine": true
+    },
+    "overshoot_stats": {
+      "n_pairs": 60,
+      "n_overshoot": 51,
+      "max_peak_time": 3.011,
+      "max_overshoot": 0.46586647199435305
+    },
+    "node_seeds": 5
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "args": {
+    "quick": false,
+    "n_seeds": null,
+    "out": null,
+    "device": null,
+    "n_pairs": 300,
+    "n_time": 80,
+    "legacy_metrics": false,
+    "betas": [
+      0.0,
+      0.1,
+      1.0
+    ]
+  },
+  "data": {
+    "n_pairs": 300,
+    "n_time": 80,
+    "t_max": 5.0,
+    "u0_range": [
+      0.2,
+      2.5
+    ],
+    "eps_range": [
+      0.01,
+      0.5
+    ],
+    "data_seed": 123,
+    "split_seed": 999,
+    "train_frac": 0.7,
+    "val_frac": 0.15,
+    "integrator": "rk4",
+    "extra": {}
+  },
+  "train": {
+    "hidden": [
+      64,
+      64
+    ],
+    "activation": "tanh",
+    "epochs": 1500,
+    "batch_size": 512,
+    "lr": 0.002,
+    "patience": 150,
+    "device": "cuda"
+  },
+  "n_seeds": 10,
+  "metrics": {
+    "cross_missing": "penalize",
+    "over_mode": "max",
+    "refine": true
+  }
+}

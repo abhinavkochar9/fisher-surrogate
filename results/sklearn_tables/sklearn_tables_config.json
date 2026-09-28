@@ -1,0 +1,15 @@
+{
+  "quick": false,
+  "n_seeds": 10,
+  "out": null,
+  "device": null,
+  "preset": "generalization",
+  "n_pairs": 600,
+  "n_time": 201,
+  "metrics": {
+    "cross_missing": "penalize",
+    "over_mode": "max",
+    "refine": true
+  },
+  "grid_resolution": 0.025
+}

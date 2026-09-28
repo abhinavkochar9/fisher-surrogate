@@ -1,0 +1,18 @@
+\begin{table}[t]
+\centering
+\scriptsize
+\caption{Transfer to the non-normal system of Eq.~(24) with a numerically tabulated baseline (mean $\pm$ 95\% CI over $S=10$ seeds; $S=5$ for the residual Neural ODE).}
+\label{tab:transfer_system}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lcccc}
+\hline
+model & $E_{\mathrm{traj}}$ & $E_{\mathrm{cross}}$ & $E_{\mathrm{over}}$ & $E_{\mathrm{eq}}$ \\
+\hline
+Direct MLP & $9.599e-08 \pm 1.1e-08$ & $3.829e-03 \pm 6.2e-04$ & $2.271e-04 \pm 3.1e-05$ & $4.465e-03 \pm 4.2e-05$ \\
+Direct MLP + $y_{\mathrm{base}}$ input & $1.676e-07 \pm 2.1e-08$ & $4.575e-03 \pm 2.1e-03$ & $3.076e-04 \pm 5.6e-05$ & $4.394e-03 \pm 5.2e-05$ \\
+Residual MLP & $2.049e-09 \pm 5.5e-10$ & $5.272e-04 \pm 7.4e-05$ & $3.122e-05 \pm 6.6e-06$ & $4.512e-03 \pm 2.0e-05$ \\
+Residual Neural ODE & $1.339e-06 \pm 4.3e-07$ & $1.337e-02 \pm 5.0e-03$ & $8.733e-04 \pm 1.6e-04$ & $4.655e-03 \pm 2.2e-04$ \\
+\hline
+\end{tabular}%
+}
+\end{table}

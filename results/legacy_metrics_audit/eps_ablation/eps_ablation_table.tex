@@ -1,0 +1,24 @@
+\begin{table}[t]
+\centering
+\scriptsize
+\caption{Error of the direct and scaled-residual MLPs stratified by $\varepsilon$ (in-distribution bins, $\varepsilon=0$, and OOD); mean $\pm$ 95\% CI over $S=10$ seeds.}
+\label{tab:eps_ablation}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{llcccc}
+\hline
+eps_range & model & $E_{\mathrm{traj}}$ & $E_{\mathrm{cross}}$ & $E_{\mathrm{over}}$ & $E_{\mathrm{eq}}$ \\
+\hline
+$\varepsilon = 0$ (exact) & Direct MLP & $1.033e-06 \pm 2.0e-07$ & -- & $1.458e-03 \pm 2.8e-04$ & $1.806e-03 \pm 3.9e-04$ \\
+$\varepsilon = 0$ (exact) & Residual MLP & $0.000e+00 \pm 0.0e+00$ & -- & $0.000e+00 \pm 0.0e+00$ & $2.553e-05 \pm 0.0e+00$ \\
+[0.01, 0.1] & Direct MLP & $1.294e-07 \pm 3.1e-08$ & $5.546e-03 \pm 1.5e-03$ & $4.370e-04 \pm 9.3e-05$ & $3.969e-04 \pm 1.1e-04$ \\
+[0.01, 0.1] & Residual MLP & $1.757e-10 \pm 5.7e-11$ & $7.927e-04 \pm 9.9e-05$ & $9.643e-06 \pm 2.9e-06$ & $2.133e-05 \pm 3.5e-06$ \\
+[0.1, 0.3] & Direct MLP & $1.202e-07 \pm 3.1e-08$ & $2.224e-03 \pm 7.0e-04$ & $3.059e-04 \pm 1.0e-04$ & $1.838e-04 \pm 5.0e-05$ \\
+[0.1, 0.3] & Residual MLP & $2.804e-09 \pm 7.4e-10$ & $7.665e-04 \pm 5.3e-05$ & $2.802e-05 \pm 9.2e-06$ & $2.140e-05 \pm 3.4e-06$ \\
+[0.3, 0.5] & Direct MLP & $1.314e-07 \pm 3.1e-08$ & $1.285e-03 \pm 3.6e-04$ & $6.005e-04 \pm 1.4e-04$ & $2.387e-04 \pm 5.6e-05$ \\
+[0.3, 0.5] & Residual MLP & $8.284e-09 \pm 2.0e-09$ & $8.556e-04 \pm 9.4e-05$ & $9.292e-05 \pm 4.5e-05$ & $7.612e-05 \pm 2.4e-05$ \\
+[0.5, 1.0] (OOD) & Direct MLP & $1.103e-03 \pm 4.3e-04$ & $1.073e-01 \pm 5.0e-02$ & $2.329e-02 \pm 8.8e-03$ & $3.014e-02 \pm 4.9e-03$ \\
+[0.5, 1.0] (OOD) & Residual MLP & $2.077e-04 \pm 3.6e-05$ & $6.224e-02 \pm 5.1e-02$ & $1.005e-02 \pm 1.9e-03$ & $1.321e-02 \pm 7.1e-04$ \\
+\hline
+\end{tabular}%
+}
+\end{table}

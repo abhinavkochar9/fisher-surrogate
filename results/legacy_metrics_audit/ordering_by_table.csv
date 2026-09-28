@@ -1,0 +1,12 @@
+table,cells,changed
+tab:surrogate_results,4,0
+tab:surrogate_ablation,4,0
+tab:physics_informed_residual,4,2
+tab:deeponet_baseline,4,0
+tab:noise_sensitivity,16,0
+tab:eps_ablation,19,0
+tab:feature_matched,4,0
+tab:node_gp_baselines,4,2
+tab:phys_convergence,4,1
+tab:ood_generalization,14,1
+tab:transfer,4,0

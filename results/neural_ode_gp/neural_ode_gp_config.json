@@ -1,0 +1,65 @@
+{
+  "args": {
+    "quick": false,
+    "n_seeds": null,
+    "out": null,
+    "device": null,
+    "n_pairs": 300,
+    "n_time": 80,
+    "legacy_metrics": false,
+    "node_seeds": 5,
+    "gp_sub": 2000,
+    "gp_seeds": 10
+  },
+  "data": {
+    "n_pairs": 300,
+    "n_time": 80,
+    "t_max": 5.0,
+    "u0_range": [
+      0.2,
+      2.5
+    ],
+    "eps_range": [
+      0.01,
+      0.5
+    ],
+    "data_seed": 123,
+    "split_seed": 999,
+    "train_frac": 0.7,
+    "val_frac": 0.15,
+    "integrator": "rk4",
+    "extra": {}
+  },
+  "train": {
+    "hidden": [
+      64,
+      64
+    ],
+    "activation": "tanh",
+    "epochs": 1500,
+    "batch_size": 512,
+    "lr": 0.002,
+    "patience": 150,
+    "device": "cuda"
+  },
+  "n_seeds": 10,
+  "metrics": {
+    "cross_missing": "penalize",
+    "over_mode": "max",
+    "refine": true
+  },
+  "node_seeds": 5,
+  "tolerances": {
+    "standard": [
+      1e-06,
+      1e-08
+    ],
+    "tight": [
+      1e-08,
+      1e-10
+    ]
+  },
+  "gp_sub": 2000,
+  "gp_seeds": 10,
+  "provenance": "GP rows computed separately at S=10 subsample seeds with the same code (fit_gp, random_state = seed), which is exactly what this script writes with --gp-seeds 10 (the default); GP training times from a run alone on the otherwise idle machine (2026-09-28). All other rows from the 2026-09-12 run."
+}

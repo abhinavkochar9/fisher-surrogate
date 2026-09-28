@@ -1,0 +1,17 @@
+\begin{table}[t]
+\centering
+\scriptsize
+\caption{Baseline surrogate evaluation on held-out Fisher-regularized variance trajectories (linear/polynomial deterministic given the split; direct MLP mean $\pm$ 95\% CI over $S=10$ seeds; unified metric definitions).}
+\label{tab:surrogate-results}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lcccc}
+\hline
+model & $E_{\mathrm{traj}}$ & $E_{\mathrm{cross}}$ & $E_{\mathrm{over}}$ & $E_{\mathrm{eq}}$ \\
+\hline
+Linear regression & $1.611\times 10^{-2}$ & $4.338\times 10^{0}$ & $2.832\times 10^{-1}$ & $7.002\times 10^{-2}$ \\
+Polynomial regression & $3.471\times 10^{-3}$ & $1.667\times 10^{0}$ & $1.378\times 10^{-1}$ & $7.311\times 10^{-2}$ \\
+Direct MLP surrogate & $1.616e-07 \pm 2.5e-08$ & $2.083e-03 \pm 4.0e-04$ & $5.560e-04 \pm 1.0e-04$ & $3.074e-04 \pm 7.7e-05$ \\
+\hline
+\end{tabular}%
+}
+\end{table}

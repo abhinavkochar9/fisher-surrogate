@@ -1,0 +1,27 @@
+\begin{table}[t]
+\centering
+\scriptsize
+\caption{Model specifications and training protocol for all surrogates (parameter counts exact; training time = mean wall-clock per seed on the machine reported in the repository README).}
+\label{tab:model_specs}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{llrllllr}
+\hline
+Model & Architecture / inputs & \#params & Optimizer, LR & Epochs / stop & Batch & Solver / tolerances & Time per seed \\
+\hline
+Linear regression & OLS on $(u_0,\varepsilon,t)$ & -- & closed form & -- & -- & -- & $<1$ s \\
+Polynomial (deg. 3) & OLS on cubic features & -- & closed form & -- & -- & -- & $<1$ s \\
+Direct MLP & $(u_0,\varepsilon,t)\to(64,64)\to u$, tanh & 4,481 & Adam, $2\times10^{-3}$ const. & 1500 / pat. 150 & 512 & -- & 79 s \\
+Residual MLP (unscaled) & $u_{\mathrm{OU}}+r_\theta$, same net & 4,481 & same & same & 512 & -- & 83 s \\
+Residual MLP (scaled) & $u_{\mathrm{OU}}+\varepsilon r_\theta$, same net & 4,481 & same & same & 512 & -- & 86 s \\
+PI-Residual ($\lambda=0.1$) & scaled residual $+\lambda\mathcal L_{\mathrm{phys}}$ & 4,481 & same & same & 512 & autograd $\partial_t$ & 90 s \\
+DeepONet-style & branch $(u_0,\varepsilon)\to(64,64)\to64$; trunk $t\to(64,64)\to64$ & 16,961 & same & same & 512 & -- & 81 s \\
+Neural ODE & $g_\phi(u,\varepsilon,t)$: (64,64), tanh & 4,481 & same & same & full batch (pairs) & dopri5, rtol 1e-06 / atol 1e-08 & 250 s \\
+Neural ODE, tight tolerance & same & 4,481 & same & same & full batch (pairs) & dopri5, rtol 1e-08 / atol 1e-10 & 496 s \\
+Residual Neural ODE & $2(1-u)+\varepsilon g_\phi$, same net & 4,481 & same & same & full batch (pairs) & dopri5, rtol 1e-06 / atol 1e-08 & 306 s \\
+Direct MLP + $u_{\mathrm{OU}}$ input & $(u_0,\varepsilon,t,u_{\mathrm{OU}})\to(64,64)\to u$ & 4,545 & same & same & 512 & -- & 94 s \\
+Gaussian process & RBF-ARD + white noise, zero mean (5 hyper.) & 5 & L-BFGS marginal lik. & -- & $n_{\mathrm{sub}}=2000$ & -- & 172 s \\
+GP with OU prior mean & RBF-ARD, mean $u_{\mathrm{OU}}$ (5 hyper.) & 5 & same & -- & $n_{\mathrm{sub}}=2000$ & -- & 169 s \\
+\hline
+\end{tabular}%
+}
+\end{table}

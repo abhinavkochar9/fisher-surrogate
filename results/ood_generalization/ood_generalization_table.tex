@@ -1,0 +1,22 @@
+\begin{table}[t]
+\centering
+\scriptsize
+\caption{Out-of-distribution generalization (mean $\pm$ 95\% CI over $S=10$ seeds).}
+\label{tab:ood_generalization}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{llcccc}
+\hline
+regime & model & $E_{\mathrm{traj}}$ & $E_{\mathrm{cross}}$ & $E_{\mathrm{over}}$ & $E_{\mathrm{eq}}$ \\
+\hline
+Low variance & Direct MLP & $2.380e-05 \pm 4.8e-06$ & $9.536e-03 \pm 1.8e-03$ & $3.089e-04 \pm 1.1e-04$ & $5.210e-04 \pm 9.8e-05$ \\
+Low variance & Residual MLP & $1.235e-05 \pm 2.1e-06$ & $4.529e-03 \pm 1.1e-03$ & $8.265e-05 \pm 2.9e-05$ & $9.397e-05 \pm 3.1e-05$ \\
+High variance & Direct MLP & $5.063e-03 \pm 1.3e-03$ & -- & $3.498e-01 \pm 4.2e-02$ & $2.678e-03 \pm 1.0e-03$ \\
+High variance & Residual MLP & $1.009e-06 \pm 4.9e-07$ & -- & $5.638e-04 \pm 2.2e-04$ & $2.136e-04 \pm 1.1e-04$ \\
+High Fisher strength & Direct MLP & $1.152e-03 \pm 5.3e-04$ & $1.150e-01 \pm 6.7e-02$ & $3.282e-02 \pm 1.1e-02$ & $3.294e-02 \pm 6.4e-03$ \\
+High Fisher strength & Residual MLP & $2.120e-04 \pm 4.7e-05$ & $2.268e-02 \pm 2.9e-02$ & $1.091e-02 \pm 2.0e-03$ & $1.444e-02 \pm 1.3e-03$ \\
+Longer time & Direct MLP & $1.116e-04 \pm 3.6e-05$ & -- & $8.488e-03 \pm 2.5e-03$ & $1.704e-02 \pm 2.8e-03$ \\
+Longer time & Residual MLP & $1.474e-06 \pm 1.1e-06$ & -- & $1.434e-03 \pm 7.0e-04$ & $1.647e-03 \pm 6.2e-04$ \\
+\hline
+\end{tabular}%
+}
+\end{table}

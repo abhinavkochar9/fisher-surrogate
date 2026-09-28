@@ -1,0 +1,17 @@
+\begin{table}[t]
+\centering
+\scriptsize
+\caption{Residual MLP trained with $\beta(E_{\mathrm{eq}}+E_{\mathrm{cross}})$ added to the trajectory loss (mean $\pm$ 95\% CI over $S=10$ seeds).}
+\label{tab:mech_loss}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lcccc}
+\hline
+model & $E_{\mathrm{traj}}$ & $E_{\mathrm{cross}}$ & $E_{\mathrm{over}}$ & $E_{\mathrm{eq}}$ \\
+\hline
+Residual MLP, $\beta=0.0$ & $3.528e-08 \pm 5.3e-09$ & $8.175e-04 \pm 9.1e-05$ & $1.377e-04 \pm 2.6e-05$ & $1.225e-04 \pm 2.0e-05$ \\
+Residual MLP, $\beta=0.1$ & $2.964e-05 \pm 4.6e-06$ & $2.716e-02 \pm 5.0e-02$ & $4.290e-03 \pm 1.1e-03$ & $2.881e-04 \pm 9.0e-05$ \\
+Residual MLP, $\beta=1.0$ & $5.462e-04 \pm 2.3e-05$ & $5.104e-01 \pm 7.2e-03$ & $4.612e-02 \pm 1.3e-03$ & $6.994e-03 \pm 2.4e-03$ \\
+\hline
+\end{tabular}%
+}
+\end{table}

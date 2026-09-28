@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+message: "If you use this code or these results, please cite the paper below."
+title: "fisher-surrogate: code and results for Mechanism-Preserving Neural Surrogates for Fisher-Regularized Probability Flows"
+version: 1.0.0
+date-released: 2026-09-27
+license: MIT
+repository-code: "https://github.com/abhinavkochar9/fisher-surrogate"
+authors:
+  - family-names: Farmer
+    given-names: Michael
+  - family-names: Kochar
+    given-names: Abhinav
+  - family-names: Lee
+    given-names: Yugyung
+    email: leeyu@umkc.edu
+preferred-citation:
+  type: article
+  title: "Beyond Pointwise Error: Mechanism-Preserving Neural Surrogates for Fisher-Regularized Probability Flows"
+  journal: Neurocomputing
+  year: 2026
+  notes: "Manuscript NEUCOM-D-26-14165, revision 1"
+  authors:
+    - family-names: Farmer
+      given-names: Michael
+    - family-names: Kochar
+      given-names: Abhinav
+    - family-names: Lee
+      given-names: Yugyung

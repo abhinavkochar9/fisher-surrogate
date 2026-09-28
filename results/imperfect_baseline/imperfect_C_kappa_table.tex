@@ -1,0 +1,29 @@
+\begin{table}[t]
+\centering
+\scriptsize
+\caption{(C) Fisher benchmark with a misspecified baseline rate $\kappa$ (mean $\pm$ 95\% CI over $S=10$ seeds).}
+\label{tab:imperfect_C}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{llcccc}
+\hline
+kappa & model & $E_{\mathrm{traj}}$ & $E_{\mathrm{cross}}$ & $E_{\mathrm{over}}$ & $E_{\mathrm{eq}}$ \\
+\hline
+0.5 & Direct MLP & $1.268e-07 \pm 2.8e-08$ & $2.271e-03 \pm 4.0e-04$ & $4.774e-04 \pm 9.7e-05$ & $2.461e-04 \pm 3.9e-05$ \\
+0.5 & Direct MLP + $u^{\kappa}_{\mathrm{OU}}$ input & $2.430e-07 \pm 6.7e-08$ & $2.434e-03 \pm 4.4e-04$ & $8.206e-04 \pm 1.7e-04$ & $3.957e-04 \pm 6.3e-05$ \\
+0.5 & Residual MLP & $7.682e-05 \pm 2.3e-05$ & $4.040e-02 \pm 1.2e-02$ & $8.173e-03 \pm 2.2e-03$ & $4.190e-03 \pm 1.1e-03$ \\
+0.8 & Direct MLP & $1.268e-07 \pm 2.8e-08$ & $2.271e-03 \pm 4.0e-04$ & $4.774e-04 \pm 9.7e-05$ & $2.461e-04 \pm 3.9e-05$ \\
+0.8 & Direct MLP + $u^{\kappa}_{\mathrm{OU}}$ input & $2.208e-07 \pm 5.7e-08$ & $2.506e-03 \pm 4.0e-04$ & $8.781e-04 \pm 2.1e-04$ & $3.210e-04 \pm 5.0e-05$ \\
+0.8 & Residual MLP & $1.096e-05 \pm 3.3e-06$ & $1.203e-02 \pm 3.3e-03$ & $3.535e-03 \pm 1.2e-03$ & $1.539e-03 \pm 4.2e-04$ \\
+1.0 & Direct MLP & $1.268e-07 \pm 2.8e-08$ & $2.271e-03 \pm 4.0e-04$ & $4.774e-04 \pm 9.7e-05$ & $2.461e-04 \pm 3.9e-05$ \\
+1.0 & Direct MLP + $u^{\kappa}_{\mathrm{OU}}$ input & $1.616e-07 \pm 2.5e-08$ & $2.086e-03 \pm 2.6e-04$ & $6.881e-04 \pm 1.4e-04$ & $2.990e-04 \pm 5.4e-05$ \\
+1.0 & Residual MLP & $4.772e-09 \pm 1.1e-09$ & $2.294e-04 \pm 4.4e-05$ & $6.034e-05 \pm 2.2e-05$ & $4.571e-05 \pm 1.1e-05$ \\
+1.2 & Direct MLP & $1.268e-07 \pm 2.8e-08$ & $2.271e-03 \pm 4.0e-04$ & $4.774e-04 \pm 9.7e-05$ & $2.461e-04 \pm 3.9e-05$ \\
+1.2 & Direct MLP + $u^{\kappa}_{\mathrm{OU}}$ input & $1.692e-07 \pm 2.5e-08$ & $1.891e-03 \pm 3.1e-04$ & $7.289e-04 \pm 1.1e-04$ & $3.316e-04 \pm 6.9e-05$ \\
+1.2 & Residual MLP & $5.698e-06 \pm 1.8e-06$ & $9.489e-03 \pm 3.0e-03$ & $3.491e-03 \pm 1.2e-03$ & $1.115e-03 \pm 3.7e-04$ \\
+2.0 & Direct MLP & $1.268e-07 \pm 2.8e-08$ & $2.271e-03 \pm 4.0e-04$ & $4.774e-04 \pm 9.7e-05$ & $2.461e-04 \pm 3.9e-05$ \\
+2.0 & Direct MLP + $u^{\kappa}_{\mathrm{OU}}$ input & $2.829e-07 \pm 1.3e-07$ & $2.678e-03 \pm 5.8e-04$ & $1.104e-03 \pm 4.4e-04$ & $3.361e-04 \pm 6.8e-05$ \\
+2.0 & Residual MLP & $8.927e-05 \pm 2.3e-05$ & $5.338e-02 \pm 5.5e-02$ & $1.433e-02 \pm 3.2e-03$ & $3.675e-03 \pm 5.4e-04$ \\
+\hline
+\end{tabular}%
+}
+\end{table}

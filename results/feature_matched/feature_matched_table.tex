@@ -1,0 +1,22 @@
+\begin{table}[t]
+\centering
+\scriptsize
+\caption{Feature-matched baselines: every model receives the unregularized OU baseline. Mean $\pm$ 95\% CI over $S=10$ seeds ($S=5$ for Neural ODE variants; $S=10$ subsample seeds for the GP). Missing-crossing counts are reported in the summary CSV.}
+\label{tab:feature_matched}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lcccc}
+\hline
+model & $E_{\mathrm{traj}}$ & $E_{\mathrm{cross}}$ & $E_{\mathrm{over}}$ & $E_{\mathrm{eq}}$ \\
+\hline
+Direct MLP (no baseline) & $1.268e-07 \pm 2.8e-08$ & $2.271e-03 \pm 4.0e-04$ & $4.774e-04 \pm 9.7e-05$ & $2.461e-04 \pm 3.9e-05$ \\
+Direct MLP + $u_{\mathrm{OU}}$ input & $1.616e-07 \pm 2.5e-08$ & $2.086e-03 \pm 2.6e-04$ & $6.881e-04 \pm 1.4e-04$ & $2.990e-04 \pm 5.4e-05$ \\
+Unscaled residual (difference model) & $3.179e-08 \pm 7.1e-09$ & $1.223e-03 \pm 3.6e-04$ & $2.007e-04 \pm 4.8e-05$ & $1.195e-04 \pm 1.9e-05$ \\
+Scaled residual MLP (proposed) & $4.772e-09 \pm 1.1e-09$ & $2.294e-04 \pm 4.4e-05$ & $6.034e-05 \pm 2.2e-05$ & $4.571e-05 \pm 1.1e-05$ \\
+GP, zero mean & $3.319e-09 \pm 3.2e-09$ & $4.240e-05 \pm 1.6e-05$ & $1.739e-05 \pm 8.5e-06$ & $1.602e-05 \pm 5.8e-06$ \\
+GP, $u_{\mathrm{OU}}$ prior mean & $3.280e-09 \pm 3.4e-09$ & $3.133e-05 \pm 1.3e-05$ & $2.489e-05 \pm 1.5e-05$ & $1.779e-05 \pm 7.7e-06$ \\
+Neural ODE (full field) & $1.492e-04 \pm 3.4e-04$ & $5.559e-02 \pm 7.5e-02$ & $3.403e-03 \pm 7.9e-03$ & $6.944e-03 \pm 1.6e-02$ \\
+Residual Neural ODE & $1.069e-06 \pm 3.8e-07$ & $5.280e-03 \pm 1.4e-03$ & $1.780e-04 \pm 6.3e-05$ & $6.440e-04 \pm 2.1e-04$ \\
+\hline
+\end{tabular}%
+}
+\end{table}

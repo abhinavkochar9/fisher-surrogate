@@ -1,0 +1,23 @@
+\begin{table}[t]
+\centering
+\scriptsize
+\caption{Pilot sweep on the direct MLP (mean $\pm$ 95\% CI over $S=3$ seeds); the (64,64) / $2\times10^{-3}$ setting was fixed from this sweep for all models.}
+\label{tab:pilot_sweep}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{llcccc}
+\hline
+width & lr & $E_{\mathrm{traj}}$ & $E_{\mathrm{cross}}$ & $E_{\mathrm{over}}$ & $E_{\mathrm{eq}}$ \\
+\hline
+(32,32) & 0.001 & $7.858e-08 \pm 5.7e-08$ & $1.537e-03 \pm 1.3e-03$ & $4.104e-04 \pm 2.7e-04$ & $2.098e-04 \pm 6.9e-05$ \\
+(32,32) & 0.002 & $1.327e-07 \pm 1.0e-07$ & $2.245e-03 \pm 1.2e-03$ & $5.927e-04 \pm 5.8e-04$ & $3.077e-04 \pm 1.2e-04$ \\
+(32,32) & 0.005 & $3.157e-07 \pm 2.3e-07$ & $3.083e-03 \pm 7.6e-04$ & $8.798e-04 \pm 3.7e-04$ & $2.835e-04 \pm 3.9e-05$ \\
+(64,64) & 0.001 & $1.171e-07 \pm 4.7e-08$ & $1.494e-03 \pm 1.6e-03$ & $4.544e-04 \pm 2.0e-04$ & $3.529e-04 \pm 1.1e-04$ \\
+(64,64) & 0.002 & $1.699e-07 \pm 9.7e-08$ & $2.964e-03 \pm 2.6e-03$ & $5.740e-04 \pm 1.2e-04$ & $3.647e-04 \pm 2.3e-04$ \\
+(64,64) & 0.005 & $3.002e-07 \pm 5.3e-08$ & $3.976e-03 \pm 2.6e-03$ & $7.127e-04 \pm 6.8e-04$ & $3.286e-04 \pm 3.0e-04$ \\
+(128,128) & 0.001 & $1.906e-07 \pm 2.1e-07$ & $2.638e-03 \pm 1.8e-03$ & $5.650e-04 \pm 3.3e-04$ & $2.026e-04 \pm 8.9e-05$ \\
+(128,128) & 0.002 & $3.320e-07 \pm 3.8e-07$ & $3.598e-03 \pm 5.6e-03$ & $1.016e-03 \pm 6.9e-04$ & $4.104e-04 \pm 2.8e-04$ \\
+(128,128) & 0.005 & $5.140e-07 \pm 9.4e-08$ & $4.788e-03 \pm 1.8e-03$ & $8.640e-04 \pm 3.1e-04$ & $4.176e-04 \pm 2.3e-04$ \\
+\hline
+\end{tabular}%
+}
+\end{table}

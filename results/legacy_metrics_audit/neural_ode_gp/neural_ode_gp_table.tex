@@ -1,0 +1,21 @@
+\begin{table}[t]
+\centering
+\scriptsize
+\caption{Neural ODE (two solver tolerance settings) and Gaussian-process baselines. Neural ODE: mean $\pm$ 95\% CI over $S=5$ seeds; GP: mean $\pm$ 95\% CI over $S=10$ subsample seeds; GP crossing time by root-finding on the posterior mean (failures counted in the summary CSV).}
+\label{tab:neural_ode_gp}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lcccc}
+\hline
+model & $E_{\mathrm{traj}}$ & $E_{\mathrm{cross}}$ & $E_{\mathrm{over}}$ & $E_{\mathrm{eq}}$ \\
+\hline
+Neural ODE (standard: rtol=1e-06, atol=1e-08) & $1.492e-04 \pm 3.4e-04$ & $5.528e-02 \pm 7.4e-02$ & $3.394e-03 \pm 7.9e-03$ & $6.944e-03 \pm 1.6e-02$ \\
+Residual Neural ODE (standard: rtol=1e-06, atol=1e-08) & $1.069e-06 \pm 3.8e-07$ & $5.338e-03 \pm 1.3e-03$ & $1.473e-04 \pm 5.3e-05$ & $6.440e-04 \pm 2.1e-04$ \\
+Neural ODE (tight: rtol=1e-08, atol=1e-10) & $1.492e-04 \pm 3.4e-04$ & $5.528e-02 \pm 7.4e-02$ & $3.394e-03 \pm 7.9e-03$ & $6.944e-03 \pm 1.6e-02$ \\
+Residual Neural ODE (tight: rtol=1e-08, atol=1e-10) & $1.069e-06 \pm 3.8e-07$ & $5.338e-03 \pm 1.3e-03$ & $1.473e-04 \pm 5.3e-05$ & $6.442e-04 \pm 2.1e-04$ \\
+Gaussian process & $3.319e-09 \pm 3.2e-09$ & $7.461e-04 \pm 7.2e-06$ & $1.586e-05 \pm 8.4e-06$ & $1.602e-05 \pm 5.8e-06$ \\
+Direct MLP & $1.268e-07 \pm 2.8e-08$ & $2.444e-03 \pm 4.6e-04$ & $4.601e-04 \pm 9.9e-05$ & $2.461e-04 \pm 3.9e-05$ \\
+Residual MLP (proposed) & $4.772e-09 \pm 1.1e-09$ & $8.077e-04 \pm 6.4e-05$ & $5.360e-05 \pm 2.3e-05$ & $4.571e-05 \pm 1.1e-05$ \\
+\hline
+\end{tabular}%
+}
+\end{table}
