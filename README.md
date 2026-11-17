@@ -12,7 +12,7 @@ every table and figure; table and figure numbers below are those of the publishe
 fisher_surrogate/        library: reduced dynamics, datasets, models, unified metrics, PDE solver
 experiments/             one script per experiment; each writes results/<experiment>/
 results/                 the published results: per-seed CSVs, summaries, LaTeX tables, configs, figures
-tables/final/            Tables 3 (time column), 11 and 19 in the manuscript's final layout
+tables/final/            Tables 3 (time column), 11 and 19 in the final layout; revision-2 rows (round2_*.tex)
 tests/                   unit tests (a few seconds)
 archive/original_colab_notebooks/   the six notebooks behind the submitted manuscript (provenance only)
 run_all.sh               regenerates every table and figure
@@ -75,9 +75,37 @@ The PDE dataset of Table 19 (A) is cached in `results/pde_bimodal/`; delete the 
 from the PDE solver (about 1 h). `python experiments/run_pde_nongaussian.py --tables-only` rebuilds
 the Table 2 and Table C.21 files from the saved simulation results in a few seconds.
 
+## Revision 2 additions (NEUCOM-D-26-14165R1)
+
+Added on `main` after `v1.0` for the second review round. Nothing published in `v1.0` changes: every
+model below that also appears in a `v1.0` table is retrained with the same code path and seeds, and
+its per-seed metrics reproduce the published files (bit-identical for the neural models, within
+1e-5 relative for the GP; the check is written next to the results).
+
+| Question | Command | Output in `results/` |
+|---|---|---|
+| Output parameterization vs. loss weighting: {direct, unscaled residual, scaled residual} x {unweighted, 1/eps^2-weighted trajectory MSE}, Table 7 setup | `python experiments/run_objective_ablation.py --part factorial` | `objective_ablation/factorial_*` |
+| Physics-informed residual, lambda in {0.01, 0.1, 1}, under each data objective (lambda = 0 is the matching factorial cell) | `python experiments/run_objective_ablation.py --part pi` | `objective_ablation/pi_*` |
+| Table 14 under the common unweighted loss (same noise draws) | `python experiments/run_objective_ablation.py --part noise` | `objective_ablation/noise_*` |
+| The six factorial models on the OOD regimes of Table 16 and at T = 5, 10, 20 | `python experiments/run_objective_ablation.py --part ood` | `objective_ablation/ood_*`, `ood_horizon_*` (not yet included) |
+| Feature-matched baselines of Table 10 (and the Neural ODEs of Table 13) on the OOD regimes of Table 16; terminal error and horizon study | `python experiments/run_feature_matched_ood.py --family mlp` (then `gp`, `node`, `node_tight`) | `feature_matched_ood/` |
+| Terminal error for the models of Table 20 | `python experiments/run_transfer_system.py --out results/transfer_terminal` and `python experiments/run_gp_offdistribution.py --axes transfer --out results/transfer_terminal` | `transfer_terminal/` |
+| Sensitivity of T_acc and T_x to the output-time sampling and the initial-density background | `python experiments/run_pde_event_sensitivity.py` | `pde_event_sensitivity/` |
+
+The OOD rows use the same per-seed regime datasets as Table 16. `--seeds` and `--no-summary` split a
+part into parallel shards (`shard_*_seed_results.csv`); `--tables-only` merges the shards and writes
+the summaries and the LaTeX rows. The runs shared the machine with each other, so their `train_time_s`
+columns are not comparable with Table 3. Figures 5 and 6 are drawn from `objective_ablation/` and
+`feature_matched_ood/` when those directories exist.
+
+The metrics module now also records, for every model, the terminal error
+`E_term = |u_hat(T_max) - u(T_max)|`, the true trajectory's distance to equilibrium
+`D_term = |u(T_max) - u*|`, and `E_over` split into rising (`u0 < u*`) and falling trajectories
+(`E_over_rise`, `E_over_fall`, `n_fall`). The four published metrics are unchanged.
+
 ## Manuscript table files
 
-`tables/final/` holds three tables in the manuscript's final layout. Each is written by the script
+`tables/final/` holds three tables in the manuscript's final layout, and the revision-2 rows. Each is written by the script
 that produces its data, and can be rebuilt from the saved results in seconds:
 
 | file | manuscript item | rebuild from `results/` |
@@ -85,6 +113,9 @@ that produces its data, and can be rebuilt from the saved results in seconds:
 | `table3_timing.tex` | Table 3, Time/seed column | `python experiments/collect_model_specs.py` |
 | `table11_offgrid.tex` | Table 11 | `python experiments/run_offgrid_time.py --tables-only` |
 | `table19_baseline_error.tex` | Table 19 | `python experiments/run_imperfect_baseline.py --tables-only` |
+| `round2_objective_{factorial,pi,noise,ood}.tex` | revision 2: objective ablation | `python experiments/run_objective_ablation.py --tables-only` |
+| `round2_table16_feature_matched.tex`, `round2_terminal_error.tex` | revision 2: Table 16 rows, terminal error | `python experiments/run_feature_matched_ood.py --tables-only` |
+| `round2_pde_event_sensitivity.tex` | revision 2: event-time sensitivity | `python experiments/run_pde_event_sensitivity.py --tables-only` |
 
 Running the same script without `--tables-only` regenerates the results first, then the table. The
 LaTeX of Tables 2 and C.21 is in `results/pde_nongaussian/` (`table2_table.tex`,

@@ -152,7 +152,12 @@ def trajectory_metrics(t, u_true, u_pred, eps=None, level=1.0, cross_missing="pe
 
     # --- asymptotic displacement ---
     e_eq = abs(float(u_pred[-1]) - float(u_eq))
+    # terminal prediction error, and the true trajectory's own finite-time distance to the attractor
+    # (a reference discrepancy, not a lower bound on E_eq)
+    e_term = abs(float(u_pred[-1]) - float(u_true[-1]))
+    d_term = abs(float(u_true[-1]) - float(u_eq))
     return {"E_traj": e_traj, "E_cross": e_cross, "E_over": e_over, "E_eq": e_eq,
+            "E_term": e_term, "D_term": d_term, "u_start": float(u_true[0]), "u_eq": float(u_eq),
             "T_cross_true": float(t_cross_true), "T_cross_pred": float(tc_pred),
             "cross_fail": fail, "cross_spurious": spurious}
 
@@ -181,6 +186,14 @@ def compute_metrics(pred_df, true_col="u_clean", pred_col="u_pred", pred_fn_fact
         rows.append(m)
     per = pd.DataFrame(rows)
     out = {m: float(np.nanmean(per[m])) if per[m].notna().any() else np.nan for m in METRICS}
+    out["E_term"] = float(per["E_term"].mean())
+    out["D_term"] = float(per["D_term"].mean())
+    # E_over split by direction: rising trajectories (u0 < u_eq, maximum at T_max) and falling ones
+    # (u0 > u_eq, maximum u0 at t = 0, where E_over measures initial-condition error)
+    rise = per["u_start"] < per["u_eq"]
+    out["E_over_rise"] = float(per.loc[rise, "E_over"].mean()) if rise.any() else np.nan
+    out["E_over_fall"] = float(per.loc[~rise, "E_over"].mean()) if (~rise).any() else np.nan
+    out["n_fall"] = int((~rise).sum())
     out["n_cross"] = int(per["T_cross_true"].notna().sum())
     out["n_cross_fail"] = int(per["cross_fail"].sum())
     out["n_cross_spurious"] = int(per["cross_spurious"].sum())

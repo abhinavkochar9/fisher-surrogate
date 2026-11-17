@@ -133,13 +133,25 @@ def _early_stop_loop(model, opt, loader, step_fn, val_fn, cfg: TrainConfig):
 # Direct / residual MLP (target already transformed by the caller)
 # ----------------------------------------------------------------------------
 
-def train_mlp(x_train, y_train, x_val, y_val, seed, cfg: TrainConfig = TrainConfig()):
+def train_mlp(x_train, y_train, x_val, y_val, seed, cfg: TrainConfig = TrainConfig(),
+              w_train=None, w_val=None, phys_lam=0.0):
     """Train a scaled MLP regressor. Returns (model, x_scaler, y_scaler).
 
     For the residual surrogates the caller passes the residual target
     r* = (u - u_OU)/eps (see ``data.xy_residual``) and maps back with
-    ``data.residual_to_u``.
+    ``data.residual_to_u``.  The loss is the MSE of the z-scored target, also for validation and
+    early stopping; for the scaled residual this is the trajectory MSE weighted by 1/eps^2.
+
+    Round-2 objective ablation (``run_objective_ablation.py``), both off by default:
+      w_train, w_val  per-sample weights; training and validation losses become
+                      mean(w * (y_hat_z - y_z)^2) in the z-scored target space.
+      phys_lam        adds phys_lam * mean(w * (R / (eps sigma_r))^2), the ODE residual R of
+                      Eq. (18) expressed in the units of the z-scored scaled residual target
+                      (requires x = (u0, eps, t) and y = (u - u_OU)/eps).  Validation uses the
+                      data term only, as for the physics-informed model.
     """
+    if w_train is not None or phys_lam > 0:
+        return _train_mlp_weighted(x_train, y_train, x_val, y_val, seed, cfg, w_train, w_val, phys_lam)
     set_seed(seed)
     dev = cfg.device
     xs, ys = Scaler.fit(x_train), Scaler.fit(y_train)
@@ -159,6 +171,57 @@ def train_mlp(x_train, y_train, x_val, y_val, seed, cfg: TrainConfig = TrainConf
     def val():
         with torch.no_grad():
             return mse(model(xv), yv).item()
+
+    _early_stop_loop(model, opt, loader, step, val, cfg)
+    return model, xs, ys
+
+
+def _train_mlp_weighted(x_train, y_train, x_val, y_val, seed, cfg, w_train, w_val, phys_lam):
+    """``train_mlp`` with per-sample loss weights and an optional ODE-residual penalty.  Seeding,
+    scalers, initialization and minibatch order are those of ``train_mlp``, so a cell differs from the
+    unweighted model with the same seed only through the objective."""
+    set_seed(seed)
+    dev = cfg.device
+    xs, ys = Scaler.fit(x_train), Scaler.fit(y_train)
+    ones = lambda n: np.ones((n, 1))  # noqa: E731
+    wtr = ones(len(x_train)) if w_train is None else np.asarray(w_train, float).reshape(-1, 1)
+    wva = ones(len(x_val)) if w_val is None else np.asarray(w_val, float).reshape(-1, 1)
+    xt = torch.tensor(xs.transform(x_train), dtype=torch.float32)
+    yt = torch.tensor(ys.transform(y_train), dtype=torch.float32)
+    wt = torch.tensor(wtr, dtype=torch.float32)
+    xv = torch.tensor(xs.transform(x_val), dtype=torch.float32, device=dev)
+    yv = torch.tensor(ys.transform(y_val), dtype=torch.float32, device=dev)
+    wv = torch.tensor(wva, dtype=torch.float32, device=dev)
+    loader = DataLoader(TensorDataset(xt, yt, wt), batch_size=cfg.batch_size, shuffle=True)
+    model = MLP(x_train.shape[1], cfg.hidden, cfg.activation).to(dev)
+    opt = torch.optim.Adam(model.parameters(), lr=cfg.lr)
+    x_mean, x_std = xs.to_torch(dev)
+    r_mean, r_std = float(ys.mean.reshape(-1)[0]), float(ys.std.reshape(-1)[0])
+
+    def penalty(xb, pred):
+        # x_raw = (u0, eps, t); r_hat = pred * sigma_r + mu_r; u_hat = u_OU + eps * r_hat.
+        # R = du_hat/dt - 2(1 - u_hat) - eps/u_hat = eps * (sigma_r dr_z/dt + 2 r_hat - 1/u_hat), so the
+        # penalty is computed as R / (eps sigma_r) without dividing by small eps.
+        x_raw = xb * x_std + x_mean
+        u0, eps, t = x_raw[:, 0:1], x_raw[:, 1:2], x_raw[:, 2:3]
+        dr_z = torch.autograd.grad(pred.sum(), xb, create_graph=True)[0][:, 2:3] / x_std[:, 2:3]
+        r_hat = pred * r_std + r_mean
+        u_hat = torch.clamp(_u_ou_t(t, u0) + eps * r_hat, min=1e-6)
+        return (r_std * dr_z + 2.0 * r_hat - 1.0 / u_hat) / r_std
+
+    def step(batch):
+        xb, yb, wb = (b.to(dev) for b in batch)
+        if phys_lam > 0:
+            xb = xb.clone().requires_grad_(True)
+        pred = model(xb)
+        loss = torch.mean(wb * (pred - yb) ** 2)
+        if phys_lam > 0:
+            loss = loss + phys_lam * torch.mean(wb * penalty(xb, pred) ** 2)
+        return loss
+
+    def val():
+        with torch.no_grad():
+            return torch.mean(wv * (model(xv) - yv) ** 2).item()
 
     _early_stop_loop(model, opt, loader, step, val, cfg)
     return model, xs, ys

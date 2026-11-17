@@ -129,7 +129,30 @@ def _errbar(ax, x, m, ci, log=False, **kw):
     ax.errorbar(x, m, yerr=_log_ci(m, ci) if log else ci, capsize=3, marker="o", **kw)
 
 
+# Figure 5 series (round 2): (label, model, loss, color, line style, marker) in objective_ablation/noise_summary.csv
+FIG5_SERIES = [("Direct MLP", "Direct MLP", "unweighted", "C1", "-", "o"),
+               ("Residual MLP, $1/\\varepsilon^2$-weighted loss", "Scaled residual MLP", "$1/\\varepsilon^2$-weighted", "C0", "-", "o"),
+               ("Residual MLP, unweighted loss", "Scaled residual MLP", "unweighted", "C0", "--", "s"),
+               ("Unscaled residual MLP", "Unscaled residual MLP", "unweighted", "C2", "-.", "^")]
+
+
 def fig5(out, fmt):
+    """E_traj vs training-target noise.  With results/objective_ablation (round 2) the published direct and
+    (1/eps^2-weighted) residual MLPs plus the residual MLPs trained with the common unweighted loss."""
+    fr = RESULTS_DIR / "objective_ablation" / "noise_summary.csv"
+    if fr.exists():
+        s = pd.read_csv(fr)
+        levels = sorted(s.noise.unique(), key=lambda n: float(n.replace("\\%", "")))
+        fig, ax = plt.subplots(figsize=(4.6, 3.0))
+        x = np.arange(len(levels)); k = len(FIG5_SERIES)
+        for j, (lab, model, loss, col, ls, mk) in enumerate(FIG5_SERIES):
+            g = s[(s.model == model) & (s.loss == loss)].set_index("noise").loc[levels]
+            ax.errorbar(x + 0.2 * (j - (k - 1) / 2) / (k - 1), g.E_traj_mean, yerr=_log_ci(g.E_traj_mean, g.E_traj_ci),
+                        capsize=2, marker=mk, ms=4, color=col, ls=ls, lw=1.1, label=lab)
+        ax.set_xticks(x); ax.set_xticklabels([n.replace("\\", "") for n in levels])
+        ax.set(yscale="log", xlabel="training-target noise level", ylabel=r"$E_{\mathrm{traj}}$", title="Noise sensitivity")
+        ax.legend(fontsize=6.5); fig.tight_layout(); _save(fig, out, "noise", fmt)
+        return
     f = RESULTS_DIR / "noise_sensitivity" / "noise_sensitivity_summary.csv"
     if not f.exists():
         return print("skip fig5")
@@ -141,7 +164,39 @@ def fig5(out, fmt):
     ax.legend(); fig.tight_layout(); _save(fig, out, "noise", fmt)
 
 
+# Figure 6 series: (label in the figure, model name in the results, color, line style, marker)
+FIG6_SERIES = [("Direct MLP", "Direct MLP (no baseline)", "C1", "-", "o"),
+               ("Direct MLP + $u_{\\mathrm{OU}}$ input", "Direct MLP + $u_{\\mathrm{OU}}$ input", "C1", "--", "s"),
+               ("Residual MLP", "Scaled residual MLP (proposed)", "C0", "-", "o"),
+               ("Unscaled residual MLP", "Unscaled residual (difference model)", "C0", "--", "s"),
+               ("Gaussian process", "GP, zero mean", "C2", "-", "o"),
+               ("GP + $u_{\\mathrm{OU}}$ prior mean", "GP, $u_{\\mathrm{OU}}$ prior mean", "C2", "--", "s"),
+               ("Residual Neural ODE", "Residual Neural ODE", "C3", "-.", "^")]
+
+
 def fig6(out, fmt):
+    """E_traj on the four OOD regimes.  With results/feature_matched_ood (round 2) all models of Table 16,
+    including the feature-matched baselines; otherwise the direct/residual MLPs and the zero-mean GP."""
+    ffm = RESULTS_DIR / "feature_matched_ood" / "feature_matched_ood_summary.csv"
+    if ffm.exists():
+        s = pd.read_csv(ffm); s = s[s.split == "ood"]
+        regs = [r for r in ("Low variance", "High variance", "High Fisher strength", "Longer time") if r in set(s.regime)]
+        fig, ax = plt.subplots(figsize=(5.2, 3.4))
+        x = np.arange(len(regs)); k = len(FIG6_SERIES)
+        for j, (lab, name, col, ls, mk) in enumerate(FIG6_SERIES):
+            g = s[s.model == name].set_index("regime")
+            if g.empty:
+                continue
+            g = g.loc[[r for r in regs if r in g.index]]
+            xx = np.array([regs.index(r) for r in g.index]) + 0.36 * (j - (k - 1) / 2) / (k - 1)
+            ax.errorbar(xx, g.E_traj_mean, yerr=_log_ci(g.E_traj_mean, g.E_traj_ci), capsize=2, marker=mk, ms=4,
+                        color=col, ls=ls, lw=1.1, label=lab)
+        ax.set_xticks(x); ax.set_xticklabels(regs, rotation=12, fontsize=7)
+        ax.set(yscale="log", ylabel=r"$E_{\mathrm{traj}}$", title="Out-of-distribution generalization")
+        lo, hi = ax.get_ylim(); ax.set_ylim(lo / 10**3.2, hi)   # room below the data for the legend
+        ax.legend(fontsize=6.3, loc="lower left", ncol=2)
+        fig.tight_layout(); _save(fig, out, "ood", fmt)
+        return
     f = RESULTS_DIR / "ood_generalization" / "ood_generalization_summary.csv"
     if not f.exists():
         return print("skip fig6")

@@ -208,7 +208,7 @@ class NeuralODESurrogate:
 
     def predict_frame(self, df):
         """Long-form prediction on the frame's own grid (must be a common grid per pair)."""
-        pairs, t, x0, p, _ = frame_to_arrays(df, self.state_cols, self.param_cols, df.columns[-1])
+        pairs, t, x0, p, _ = frame_to_arrays(df, self.state_cols, self.param_cols, "t")   # target values unused
         # x0 is the state at t = 0; if the frame's grid does not start at 0 (e.g. the half-step
         # shifted grid of run_offgrid_time.py) integrate from 0 and drop that point, exactly as
         # pred_fn_factory does. Without this, odeint would treat x0 as the state at t[0].

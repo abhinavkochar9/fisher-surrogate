@@ -1,0 +1,56 @@
+{
+  "args": {
+    "quick": false,
+    "n_seeds": null,
+    "out": "results_round2/pde_event_sensitivity",
+    "device": null,
+    "families": [
+      "Gaussian",
+      "Asymmetric bimodal"
+    ],
+    "workers": 2,
+    "tables_only": false
+  },
+  "n_out": [
+    126,
+    251,
+    501,
+    1001,
+    2001,
+    4001
+  ],
+  "backgrounds": [
+    1e-10,
+    1e-09,
+    1e-08,
+    1e-07,
+    1e-06
+  ],
+  "refine_n_out": [
+    501,
+    4001
+  ],
+  "reference": [
+    6.0,
+    512,
+    0.0001
+  ],
+  "levels": {
+    "coarse": [
+      256,
+      0.0002
+    ],
+    "ref.": [
+      512,
+      0.0001
+    ],
+    "fine": [
+      1024,
+      5e-05
+    ]
+  },
+  "domains": [
+    6.0,
+    8.0
+  ]
+}

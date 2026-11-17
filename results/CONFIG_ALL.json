@@ -160,6 +160,485 @@
     "gp_seeds": 10,
     "provenance": "GP rows computed separately at S=10 subsample seeds with the same code (fit_gp, random_state = seed), which is exactly what this script writes with --gp-seeds 10 (the default); GP training times from a run alone on the otherwise idle machine (2026-09-28). All other rows from the 2026-09-12 run."
   },
+  "feature_matched_ood/shard_gp_s0-4_config.json": {
+    "args": {
+      "quick": false,
+      "n_seeds": null,
+      "out": "results_round2/feature_matched_ood",
+      "device": null,
+      "n_pairs": 300,
+      "n_time": 80,
+      "legacy_metrics": false,
+      "family": "gp",
+      "node_seeds": 5,
+      "gp_sub": 2000,
+      "n_ood_pairs": 120,
+      "seeds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "tables_only": false,
+      "no_summary": true
+    },
+    "data": {
+      "n_pairs": 300,
+      "n_time": 80,
+      "t_max": 5.0,
+      "u0_range": [
+        0.2,
+        2.5
+      ],
+      "eps_range": [
+        0.01,
+        0.5
+      ],
+      "data_seed": 123,
+      "split_seed": 999,
+      "train_frac": 0.7,
+      "val_frac": 0.15,
+      "integrator": "rk4",
+      "extra": {}
+    },
+    "train": {
+      "hidden": [
+        64,
+        64
+      ],
+      "activation": "tanh",
+      "epochs": 1500,
+      "batch_size": 512,
+      "lr": 0.002,
+      "patience": 150,
+      "device": "cuda"
+    },
+    "n_seeds": 10,
+    "metrics": {
+      "cross_missing": "penalize",
+      "over_mode": "max",
+      "refine": true
+    },
+    "family": "gp",
+    "seeds": 10,
+    "n_ood_pairs": 120,
+    "ood_data_seed": "OOD_DATA_SEED_BASE + seed index",
+    "horizons": [
+      5.0,
+      10.0,
+      20.0
+    ]
+  },
+  "feature_matched_ood/shard_gp_s5-9_config.json": {
+    "args": {
+      "quick": false,
+      "n_seeds": null,
+      "out": "results_round2/feature_matched_ood",
+      "device": null,
+      "n_pairs": 300,
+      "n_time": 80,
+      "legacy_metrics": false,
+      "family": "gp",
+      "node_seeds": 5,
+      "gp_sub": 2000,
+      "n_ood_pairs": 120,
+      "seeds": [
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "tables_only": false,
+      "no_summary": true
+    },
+    "data": {
+      "n_pairs": 300,
+      "n_time": 80,
+      "t_max": 5.0,
+      "u0_range": [
+        0.2,
+        2.5
+      ],
+      "eps_range": [
+        0.01,
+        0.5
+      ],
+      "data_seed": 123,
+      "split_seed": 999,
+      "train_frac": 0.7,
+      "val_frac": 0.15,
+      "integrator": "rk4",
+      "extra": {}
+    },
+    "train": {
+      "hidden": [
+        64,
+        64
+      ],
+      "activation": "tanh",
+      "epochs": 1500,
+      "batch_size": 512,
+      "lr": 0.002,
+      "patience": 150,
+      "device": "cuda"
+    },
+    "n_seeds": 10,
+    "metrics": {
+      "cross_missing": "penalize",
+      "over_mode": "max",
+      "refine": true
+    },
+    "family": "gp",
+    "seeds": 10,
+    "n_ood_pairs": 120,
+    "ood_data_seed": "OOD_DATA_SEED_BASE + seed index",
+    "horizons": [
+      5.0,
+      10.0,
+      20.0
+    ]
+  },
+  "feature_matched_ood/shard_mlp_s0-4_config.json": {
+    "args": {
+      "quick": false,
+      "n_seeds": null,
+      "out": "results_round2/feature_matched_ood",
+      "device": null,
+      "n_pairs": 300,
+      "n_time": 80,
+      "legacy_metrics": false,
+      "family": "mlp",
+      "node_seeds": 5,
+      "gp_sub": 2000,
+      "n_ood_pairs": 120,
+      "seeds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "tables_only": false,
+      "no_summary": true
+    },
+    "data": {
+      "n_pairs": 300,
+      "n_time": 80,
+      "t_max": 5.0,
+      "u0_range": [
+        0.2,
+        2.5
+      ],
+      "eps_range": [
+        0.01,
+        0.5
+      ],
+      "data_seed": 123,
+      "split_seed": 999,
+      "train_frac": 0.7,
+      "val_frac": 0.15,
+      "integrator": "rk4",
+      "extra": {}
+    },
+    "train": {
+      "hidden": [
+        64,
+        64
+      ],
+      "activation": "tanh",
+      "epochs": 1500,
+      "batch_size": 512,
+      "lr": 0.002,
+      "patience": 150,
+      "device": "cuda"
+    },
+    "n_seeds": 10,
+    "metrics": {
+      "cross_missing": "penalize",
+      "over_mode": "max",
+      "refine": true
+    },
+    "family": "mlp",
+    "seeds": 10,
+    "n_ood_pairs": 120,
+    "ood_data_seed": "OOD_DATA_SEED_BASE + seed index",
+    "horizons": [
+      5.0,
+      10.0,
+      20.0
+    ]
+  },
+  "feature_matched_ood/shard_mlp_s5-9_config.json": {
+    "args": {
+      "quick": false,
+      "n_seeds": null,
+      "out": "results_round2/feature_matched_ood",
+      "device": null,
+      "n_pairs": 300,
+      "n_time": 80,
+      "legacy_metrics": false,
+      "family": "mlp",
+      "node_seeds": 5,
+      "gp_sub": 2000,
+      "n_ood_pairs": 120,
+      "seeds": [
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "tables_only": false,
+      "no_summary": true
+    },
+    "data": {
+      "n_pairs": 300,
+      "n_time": 80,
+      "t_max": 5.0,
+      "u0_range": [
+        0.2,
+        2.5
+      ],
+      "eps_range": [
+        0.01,
+        0.5
+      ],
+      "data_seed": 123,
+      "split_seed": 999,
+      "train_frac": 0.7,
+      "val_frac": 0.15,
+      "integrator": "rk4",
+      "extra": {}
+    },
+    "train": {
+      "hidden": [
+        64,
+        64
+      ],
+      "activation": "tanh",
+      "epochs": 1500,
+      "batch_size": 512,
+      "lr": 0.002,
+      "patience": 150,
+      "device": "cuda"
+    },
+    "n_seeds": 10,
+    "metrics": {
+      "cross_missing": "penalize",
+      "over_mode": "max",
+      "refine": true
+    },
+    "family": "mlp",
+    "seeds": 10,
+    "n_ood_pairs": 120,
+    "ood_data_seed": "OOD_DATA_SEED_BASE + seed index",
+    "horizons": [
+      5.0,
+      10.0,
+      20.0
+    ]
+  },
+  "feature_matched_ood/shard_node_config.json": {
+    "args": {
+      "quick": false,
+      "n_seeds": null,
+      "out": "results_round2/feature_matched_ood",
+      "device": null,
+      "n_pairs": 300,
+      "n_time": 80,
+      "legacy_metrics": false,
+      "family": "node",
+      "node_seeds": 5,
+      "gp_sub": 2000,
+      "n_ood_pairs": 120,
+      "seeds": null,
+      "tables_only": false,
+      "no_summary": true
+    },
+    "data": {
+      "n_pairs": 300,
+      "n_time": 80,
+      "t_max": 5.0,
+      "u0_range": [
+        0.2,
+        2.5
+      ],
+      "eps_range": [
+        0.01,
+        0.5
+      ],
+      "data_seed": 123,
+      "split_seed": 999,
+      "train_frac": 0.7,
+      "val_frac": 0.15,
+      "integrator": "rk4",
+      "extra": {}
+    },
+    "train": {
+      "hidden": [
+        64,
+        64
+      ],
+      "activation": "tanh",
+      "epochs": 1500,
+      "batch_size": 512,
+      "lr": 0.002,
+      "patience": 150,
+      "device": "cuda"
+    },
+    "n_seeds": 10,
+    "metrics": {
+      "cross_missing": "penalize",
+      "over_mode": "max",
+      "refine": true
+    },
+    "family": "node",
+    "seeds": 5,
+    "n_ood_pairs": 120,
+    "ood_data_seed": "OOD_DATA_SEED_BASE + seed index",
+    "horizons": [
+      5.0,
+      10.0,
+      20.0
+    ]
+  },
+  "feature_matched_ood/shard_node_tight_s0-2_config.json": {
+    "args": {
+      "quick": false,
+      "n_seeds": null,
+      "out": "results_round2/feature_matched_ood",
+      "device": null,
+      "n_pairs": 300,
+      "n_time": 80,
+      "legacy_metrics": false,
+      "family": "node_tight",
+      "node_seeds": 5,
+      "gp_sub": 2000,
+      "n_ood_pairs": 120,
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "tables_only": false,
+      "no_summary": true
+    },
+    "data": {
+      "n_pairs": 300,
+      "n_time": 80,
+      "t_max": 5.0,
+      "u0_range": [
+        0.2,
+        2.5
+      ],
+      "eps_range": [
+        0.01,
+        0.5
+      ],
+      "data_seed": 123,
+      "split_seed": 999,
+      "train_frac": 0.7,
+      "val_frac": 0.15,
+      "integrator": "rk4",
+      "extra": {}
+    },
+    "train": {
+      "hidden": [
+        64,
+        64
+      ],
+      "activation": "tanh",
+      "epochs": 1500,
+      "batch_size": 512,
+      "lr": 0.002,
+      "patience": 150,
+      "device": "cuda"
+    },
+    "n_seeds": 10,
+    "metrics": {
+      "cross_missing": "penalize",
+      "over_mode": "max",
+      "refine": true
+    },
+    "family": "node_tight",
+    "seeds": 5,
+    "n_ood_pairs": 120,
+    "ood_data_seed": "OOD_DATA_SEED_BASE + seed index",
+    "horizons": [
+      5.0,
+      10.0,
+      20.0
+    ]
+  },
+  "feature_matched_ood/shard_node_tight_s3-4_config.json": {
+    "args": {
+      "quick": false,
+      "n_seeds": null,
+      "out": "results_round2/feature_matched_ood",
+      "device": null,
+      "n_pairs": 300,
+      "n_time": 80,
+      "legacy_metrics": false,
+      "family": "node_tight",
+      "node_seeds": 5,
+      "gp_sub": 2000,
+      "n_ood_pairs": 120,
+      "seeds": [
+        3,
+        4
+      ],
+      "tables_only": false,
+      "no_summary": true
+    },
+    "data": {
+      "n_pairs": 300,
+      "n_time": 80,
+      "t_max": 5.0,
+      "u0_range": [
+        0.2,
+        2.5
+      ],
+      "eps_range": [
+        0.01,
+        0.5
+      ],
+      "data_seed": 123,
+      "split_seed": 999,
+      "train_frac": 0.7,
+      "val_frac": 0.15,
+      "integrator": "rk4",
+      "extra": {}
+    },
+    "train": {
+      "hidden": [
+        64,
+        64
+      ],
+      "activation": "tanh",
+      "epochs": 1500,
+      "batch_size": 512,
+      "lr": 0.002,
+      "patience": 150,
+      "device": "cuda"
+    },
+    "n_seeds": 10,
+    "metrics": {
+      "cross_missing": "penalize",
+      "over_mode": "max",
+      "refine": true
+    },
+    "family": "node_tight",
+    "seeds": 5,
+    "n_ood_pairs": 120,
+    "ood_data_seed": "OOD_DATA_SEED_BASE + seed index",
+    "horizons": [
+      5.0,
+      10.0,
+      20.0
+    ]
+  },
   "gp_offdistribution/gp_offdistribution_config.json": {
     "args": {
       "quick": false,
@@ -1039,6 +1518,666 @@
       "refine": true
     }
   },
+  "objective_ablation/shard_factorial_s0-4_config.json": {
+    "args": {
+      "quick": false,
+      "n_seeds": null,
+      "out": "results_round2/objective_ablation",
+      "device": null,
+      "n_pairs": 300,
+      "n_time": 80,
+      "legacy_metrics": false,
+      "part": "factorial",
+      "lambdas": [
+        0.01,
+        0.1,
+        1.0
+      ],
+      "levels": [
+        0.0,
+        0.001,
+        0.01,
+        0.05
+      ],
+      "tag": "factorial_s0-4",
+      "seeds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "tables_only": false,
+      "no_summary": true
+    },
+    "data": {
+      "n_pairs": 300,
+      "n_time": 80,
+      "t_max": 5.0,
+      "u0_range": [
+        0.2,
+        2.5
+      ],
+      "eps_range": [
+        0.01,
+        0.5
+      ],
+      "data_seed": 123,
+      "split_seed": 999,
+      "train_frac": 0.7,
+      "val_frac": 0.15,
+      "integrator": "rk4",
+      "extra": {}
+    },
+    "train": {
+      "hidden": [
+        64,
+        64
+      ],
+      "activation": "tanh",
+      "epochs": 1500,
+      "batch_size": 512,
+      "lr": 0.002,
+      "patience": 150,
+      "device": "cuda"
+    },
+    "n_seeds": 10,
+    "metrics": {
+      "cross_missing": "penalize",
+      "over_mode": "max",
+      "refine": true
+    },
+    "native_weighting": {
+      "direct": "none",
+      "unscaled": "none",
+      "scaled": "inv_eps2"
+    },
+    "seeds": {
+      "direct": "2026+i",
+      "residual and PI": "2026+i+5000",
+      "noise draws": "2026+i+10000(+1 val)"
+    }
+  },
+  "objective_ablation/shard_factorial_s5-9_config.json": {
+    "args": {
+      "quick": false,
+      "n_seeds": null,
+      "out": "results_round2/objective_ablation",
+      "device": null,
+      "n_pairs": 300,
+      "n_time": 80,
+      "legacy_metrics": false,
+      "part": "factorial",
+      "lambdas": [
+        0.01,
+        0.1,
+        1.0
+      ],
+      "levels": [
+        0.0,
+        0.001,
+        0.01,
+        0.05
+      ],
+      "tag": "factorial_s5-9",
+      "seeds": [
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "tables_only": false,
+      "no_summary": true
+    },
+    "data": {
+      "n_pairs": 300,
+      "n_time": 80,
+      "t_max": 5.0,
+      "u0_range": [
+        0.2,
+        2.5
+      ],
+      "eps_range": [
+        0.01,
+        0.5
+      ],
+      "data_seed": 123,
+      "split_seed": 999,
+      "train_frac": 0.7,
+      "val_frac": 0.15,
+      "integrator": "rk4",
+      "extra": {}
+    },
+    "train": {
+      "hidden": [
+        64,
+        64
+      ],
+      "activation": "tanh",
+      "epochs": 1500,
+      "batch_size": 512,
+      "lr": 0.002,
+      "patience": 150,
+      "device": "cuda"
+    },
+    "n_seeds": 10,
+    "metrics": {
+      "cross_missing": "penalize",
+      "over_mode": "max",
+      "refine": true
+    },
+    "native_weighting": {
+      "direct": "none",
+      "unscaled": "none",
+      "scaled": "inv_eps2"
+    },
+    "seeds": {
+      "direct": "2026+i",
+      "residual and PI": "2026+i+5000",
+      "noise draws": "2026+i+10000(+1 val)"
+    }
+  },
+  "objective_ablation/shard_noise_0.001_config.json": {
+    "args": {
+      "quick": false,
+      "n_seeds": null,
+      "out": "results_round2/objective_ablation",
+      "device": null,
+      "n_pairs": 300,
+      "n_time": 80,
+      "legacy_metrics": false,
+      "part": "noise",
+      "lambdas": [
+        0.01,
+        0.1,
+        1.0
+      ],
+      "levels": [
+        0.001
+      ],
+      "tag": "noise_0.001",
+      "seeds": null,
+      "tables_only": false,
+      "no_summary": true
+    },
+    "data": {
+      "n_pairs": 300,
+      "n_time": 80,
+      "t_max": 5.0,
+      "u0_range": [
+        0.2,
+        2.5
+      ],
+      "eps_range": [
+        0.01,
+        0.5
+      ],
+      "data_seed": 123,
+      "split_seed": 999,
+      "train_frac": 0.7,
+      "val_frac": 0.15,
+      "integrator": "rk4",
+      "extra": {}
+    },
+    "train": {
+      "hidden": [
+        64,
+        64
+      ],
+      "activation": "tanh",
+      "epochs": 1500,
+      "batch_size": 512,
+      "lr": 0.002,
+      "patience": 150,
+      "device": "cuda"
+    },
+    "n_seeds": 10,
+    "metrics": {
+      "cross_missing": "penalize",
+      "over_mode": "max",
+      "refine": true
+    },
+    "native_weighting": {
+      "direct": "none",
+      "unscaled": "none",
+      "scaled": "inv_eps2"
+    },
+    "seeds": {
+      "direct": "2026+i",
+      "residual and PI": "2026+i+5000",
+      "noise draws": "2026+i+10000(+1 val)"
+    }
+  },
+  "objective_ablation/shard_noise_0.01_config.json": {
+    "args": {
+      "quick": false,
+      "n_seeds": null,
+      "out": "results_round2/objective_ablation",
+      "device": null,
+      "n_pairs": 300,
+      "n_time": 80,
+      "legacy_metrics": false,
+      "part": "noise",
+      "lambdas": [
+        0.01,
+        0.1,
+        1.0
+      ],
+      "levels": [
+        0.01
+      ],
+      "tag": "noise_0.01",
+      "seeds": null,
+      "tables_only": false,
+      "no_summary": true
+    },
+    "data": {
+      "n_pairs": 300,
+      "n_time": 80,
+      "t_max": 5.0,
+      "u0_range": [
+        0.2,
+        2.5
+      ],
+      "eps_range": [
+        0.01,
+        0.5
+      ],
+      "data_seed": 123,
+      "split_seed": 999,
+      "train_frac": 0.7,
+      "val_frac": 0.15,
+      "integrator": "rk4",
+      "extra": {}
+    },
+    "train": {
+      "hidden": [
+        64,
+        64
+      ],
+      "activation": "tanh",
+      "epochs": 1500,
+      "batch_size": 512,
+      "lr": 0.002,
+      "patience": 150,
+      "device": "cuda"
+    },
+    "n_seeds": 10,
+    "metrics": {
+      "cross_missing": "penalize",
+      "over_mode": "max",
+      "refine": true
+    },
+    "native_weighting": {
+      "direct": "none",
+      "unscaled": "none",
+      "scaled": "inv_eps2"
+    },
+    "seeds": {
+      "direct": "2026+i",
+      "residual and PI": "2026+i+5000",
+      "noise draws": "2026+i+10000(+1 val)"
+    }
+  },
+  "objective_ablation/shard_noise_0.05_config.json": {
+    "args": {
+      "quick": false,
+      "n_seeds": null,
+      "out": "results_round2/objective_ablation",
+      "device": null,
+      "n_pairs": 300,
+      "n_time": 80,
+      "legacy_metrics": false,
+      "part": "noise",
+      "lambdas": [
+        0.01,
+        0.1,
+        1.0
+      ],
+      "levels": [
+        0.05
+      ],
+      "tag": "noise_0.05",
+      "seeds": null,
+      "tables_only": false,
+      "no_summary": true
+    },
+    "data": {
+      "n_pairs": 300,
+      "n_time": 80,
+      "t_max": 5.0,
+      "u0_range": [
+        0.2,
+        2.5
+      ],
+      "eps_range": [
+        0.01,
+        0.5
+      ],
+      "data_seed": 123,
+      "split_seed": 999,
+      "train_frac": 0.7,
+      "val_frac": 0.15,
+      "integrator": "rk4",
+      "extra": {}
+    },
+    "train": {
+      "hidden": [
+        64,
+        64
+      ],
+      "activation": "tanh",
+      "epochs": 1500,
+      "batch_size": 512,
+      "lr": 0.002,
+      "patience": 150,
+      "device": "cuda"
+    },
+    "n_seeds": 10,
+    "metrics": {
+      "cross_missing": "penalize",
+      "over_mode": "max",
+      "refine": true
+    },
+    "native_weighting": {
+      "direct": "none",
+      "unscaled": "none",
+      "scaled": "inv_eps2"
+    },
+    "seeds": {
+      "direct": "2026+i",
+      "residual and PI": "2026+i+5000",
+      "noise draws": "2026+i+10000(+1 val)"
+    }
+  },
+  "objective_ablation/shard_noise_0_config.json": {
+    "args": {
+      "quick": false,
+      "n_seeds": null,
+      "out": "results_round2/objective_ablation",
+      "device": null,
+      "n_pairs": 300,
+      "n_time": 80,
+      "legacy_metrics": false,
+      "part": "noise",
+      "lambdas": [
+        0.01,
+        0.1,
+        1.0
+      ],
+      "levels": [
+        0.0
+      ],
+      "tag": "noise_0",
+      "seeds": null,
+      "tables_only": false,
+      "no_summary": true
+    },
+    "data": {
+      "n_pairs": 300,
+      "n_time": 80,
+      "t_max": 5.0,
+      "u0_range": [
+        0.2,
+        2.5
+      ],
+      "eps_range": [
+        0.01,
+        0.5
+      ],
+      "data_seed": 123,
+      "split_seed": 999,
+      "train_frac": 0.7,
+      "val_frac": 0.15,
+      "integrator": "rk4",
+      "extra": {}
+    },
+    "train": {
+      "hidden": [
+        64,
+        64
+      ],
+      "activation": "tanh",
+      "epochs": 1500,
+      "batch_size": 512,
+      "lr": 0.002,
+      "patience": 150,
+      "device": "cuda"
+    },
+    "n_seeds": 10,
+    "metrics": {
+      "cross_missing": "penalize",
+      "over_mode": "max",
+      "refine": true
+    },
+    "native_weighting": {
+      "direct": "none",
+      "unscaled": "none",
+      "scaled": "inv_eps2"
+    },
+    "seeds": {
+      "direct": "2026+i",
+      "residual and PI": "2026+i+5000",
+      "noise draws": "2026+i+10000(+1 val)"
+    }
+  },
+  "objective_ablation/shard_pi_0.01_config.json": {
+    "args": {
+      "quick": false,
+      "n_seeds": null,
+      "out": "results_round2/objective_ablation",
+      "device": null,
+      "n_pairs": 300,
+      "n_time": 80,
+      "legacy_metrics": false,
+      "part": "pi",
+      "lambdas": [
+        0.01
+      ],
+      "levels": [
+        0.0,
+        0.001,
+        0.01,
+        0.05
+      ],
+      "tag": "pi_0.01",
+      "seeds": null,
+      "tables_only": false,
+      "no_summary": true
+    },
+    "data": {
+      "n_pairs": 300,
+      "n_time": 80,
+      "t_max": 5.0,
+      "u0_range": [
+        0.2,
+        2.5
+      ],
+      "eps_range": [
+        0.01,
+        0.5
+      ],
+      "data_seed": 123,
+      "split_seed": 999,
+      "train_frac": 0.7,
+      "val_frac": 0.15,
+      "integrator": "rk4",
+      "extra": {}
+    },
+    "train": {
+      "hidden": [
+        64,
+        64
+      ],
+      "activation": "tanh",
+      "epochs": 1500,
+      "batch_size": 512,
+      "lr": 0.002,
+      "patience": 150,
+      "device": "cuda"
+    },
+    "n_seeds": 10,
+    "metrics": {
+      "cross_missing": "penalize",
+      "over_mode": "max",
+      "refine": true
+    },
+    "native_weighting": {
+      "direct": "none",
+      "unscaled": "none",
+      "scaled": "inv_eps2"
+    },
+    "seeds": {
+      "direct": "2026+i",
+      "residual and PI": "2026+i+5000",
+      "noise draws": "2026+i+10000(+1 val)"
+    }
+  },
+  "objective_ablation/shard_pi_0.1_config.json": {
+    "args": {
+      "quick": false,
+      "n_seeds": null,
+      "out": "results_round2/objective_ablation",
+      "device": null,
+      "n_pairs": 300,
+      "n_time": 80,
+      "legacy_metrics": false,
+      "part": "pi",
+      "lambdas": [
+        0.1
+      ],
+      "levels": [
+        0.0,
+        0.001,
+        0.01,
+        0.05
+      ],
+      "tag": "pi_0.1",
+      "seeds": null,
+      "tables_only": false,
+      "no_summary": true
+    },
+    "data": {
+      "n_pairs": 300,
+      "n_time": 80,
+      "t_max": 5.0,
+      "u0_range": [
+        0.2,
+        2.5
+      ],
+      "eps_range": [
+        0.01,
+        0.5
+      ],
+      "data_seed": 123,
+      "split_seed": 999,
+      "train_frac": 0.7,
+      "val_frac": 0.15,
+      "integrator": "rk4",
+      "extra": {}
+    },
+    "train": {
+      "hidden": [
+        64,
+        64
+      ],
+      "activation": "tanh",
+      "epochs": 1500,
+      "batch_size": 512,
+      "lr": 0.002,
+      "patience": 150,
+      "device": "cuda"
+    },
+    "n_seeds": 10,
+    "metrics": {
+      "cross_missing": "penalize",
+      "over_mode": "max",
+      "refine": true
+    },
+    "native_weighting": {
+      "direct": "none",
+      "unscaled": "none",
+      "scaled": "inv_eps2"
+    },
+    "seeds": {
+      "direct": "2026+i",
+      "residual and PI": "2026+i+5000",
+      "noise draws": "2026+i+10000(+1 val)"
+    }
+  },
+  "objective_ablation/shard_pi_1.0_config.json": {
+    "args": {
+      "quick": false,
+      "n_seeds": null,
+      "out": "results_round2/objective_ablation",
+      "device": null,
+      "n_pairs": 300,
+      "n_time": 80,
+      "legacy_metrics": false,
+      "part": "pi",
+      "lambdas": [
+        1.0
+      ],
+      "levels": [
+        0.0,
+        0.001,
+        0.01,
+        0.05
+      ],
+      "tag": "pi_1.0",
+      "seeds": null,
+      "tables_only": false,
+      "no_summary": true
+    },
+    "data": {
+      "n_pairs": 300,
+      "n_time": 80,
+      "t_max": 5.0,
+      "u0_range": [
+        0.2,
+        2.5
+      ],
+      "eps_range": [
+        0.01,
+        0.5
+      ],
+      "data_seed": 123,
+      "split_seed": 999,
+      "train_frac": 0.7,
+      "val_frac": 0.15,
+      "integrator": "rk4",
+      "extra": {}
+    },
+    "train": {
+      "hidden": [
+        64,
+        64
+      ],
+      "activation": "tanh",
+      "epochs": 1500,
+      "batch_size": 512,
+      "lr": 0.002,
+      "patience": 150,
+      "device": "cuda"
+    },
+    "n_seeds": 10,
+    "metrics": {
+      "cross_missing": "penalize",
+      "over_mode": "max",
+      "refine": true
+    },
+    "native_weighting": {
+      "direct": "none",
+      "unscaled": "none",
+      "scaled": "inv_eps2"
+    },
+    "seeds": {
+      "direct": "2026+i",
+      "residual and PI": "2026+i+5000",
+      "noise draws": "2026+i+10000(+1 val)"
+    }
+  },
   "offgrid_time/offgrid_time_config.json": {
     "args": {
       "quick": false,
@@ -1137,6 +2276,62 @@
       "over_mode": "max",
       "refine": true
     }
+  },
+  "pde_event_sensitivity/event_sensitivity_config.json": {
+    "args": {
+      "quick": false,
+      "n_seeds": null,
+      "out": "results_round2/pde_event_sensitivity",
+      "device": null,
+      "families": [
+        "Gaussian",
+        "Asymmetric bimodal"
+      ],
+      "workers": 2,
+      "tables_only": false
+    },
+    "n_out": [
+      126,
+      251,
+      501,
+      1001,
+      2001,
+      4001
+    ],
+    "backgrounds": [
+      1e-10,
+      1e-09,
+      1e-08,
+      1e-07,
+      1e-06
+    ],
+    "refine_n_out": [
+      501,
+      4001
+    ],
+    "reference": [
+      6.0,
+      512,
+      0.0001
+    ],
+    "levels": {
+      "coarse": [
+        256,
+        0.0002
+      ],
+      "ref.": [
+        512,
+        0.0001
+      ],
+      "fine": [
+        1024,
+        5e-05
+      ]
+    },
+    "domains": [
+      6.0,
+      8.0
+    ]
   },
   "pde_nongaussian/pde_nongaussian_config.json": {
     "quick": false,
@@ -1373,6 +2568,123 @@
       "quick": false,
       "n_seeds": null,
       "out": null,
+      "device": null,
+      "n_pairs": 400,
+      "n_time": 80,
+      "legacy_metrics": false,
+      "node_seeds": 5,
+      "skip_node": false
+    },
+    "data": {
+      "n_pairs": 400,
+      "n_time": 80,
+      "t_max": 5.0,
+      "u0_range": [
+        0.2,
+        2.5
+      ],
+      "eps_range": [
+        0.01,
+        0.5
+      ],
+      "data_seed": 123,
+      "split_seed": 999,
+      "train_frac": 0.7,
+      "val_frac": 0.15,
+      "integrator": "rk4",
+      "extra": {}
+    },
+    "train": {
+      "hidden": [
+        64,
+        64
+      ],
+      "activation": "tanh",
+      "epochs": 1500,
+      "batch_size": 512,
+      "lr": 0.002,
+      "patience": 150,
+      "device": "cuda"
+    },
+    "n_seeds": 10,
+    "metrics": {
+      "cross_missing": "penalize",
+      "over_mode": "max",
+      "refine": true
+    },
+    "overshoot_stats": {
+      "n_pairs": 60,
+      "n_overshoot": 51,
+      "max_peak_time": 3.011,
+      "max_overshoot": 0.46586647199435305
+    },
+    "node_seeds": 5
+  },
+  "transfer_terminal/gp_offdistribution_config.json": {
+    "args": {
+      "quick": false,
+      "n_seeds": null,
+      "out": "results_round2/gp_transfer",
+      "device": null,
+      "n_pairs": 300,
+      "n_time": 80,
+      "legacy_metrics": false,
+      "n_ood_pairs": 120,
+      "transfer_pairs": 400,
+      "gp_sub": 2000,
+      "gp_seeds": 10,
+      "axes": [
+        "transfer"
+      ],
+      "pred_only": false
+    },
+    "data": {
+      "n_pairs": 300,
+      "n_time": 80,
+      "t_max": 5.0,
+      "u0_range": [
+        0.2,
+        2.5
+      ],
+      "eps_range": [
+        0.01,
+        0.5
+      ],
+      "data_seed": 123,
+      "split_seed": 999,
+      "train_frac": 0.7,
+      "val_frac": 0.15,
+      "integrator": "rk4",
+      "extra": {}
+    },
+    "train": {
+      "hidden": [
+        64,
+        64
+      ],
+      "activation": "tanh",
+      "epochs": 1500,
+      "batch_size": 512,
+      "lr": 0.002,
+      "patience": 150,
+      "device": "cuda"
+    },
+    "n_seeds": 10,
+    "metrics": {
+      "cross_missing": "penalize",
+      "over_mode": "max",
+      "refine": true
+    },
+    "gp_sub": 2000,
+    "gp_seeds": 10,
+    "n_ood_pairs": 120,
+    "transfer_pairs": 400
+  },
+  "transfer_terminal/transfer_system_config.json": {
+    "args": {
+      "quick": false,
+      "n_seeds": null,
+      "out": "results_round2/transfer_system",
       "device": null,
       "n_pairs": 400,
       "n_time": 80,

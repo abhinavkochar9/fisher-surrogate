@@ -1,0 +1,11 @@
+model,published_file,seeds,max_rel_diff
+Direct MLP (no baseline),results/feature_matched/feature_matched_seed_results.csv,10,0.0
+Direct MLP + $u_{\mathrm{OU}}$ input,results/feature_matched/feature_matched_seed_results.csv,10,1.2512320081215177e-16
+Unscaled residual (difference model),results/feature_matched/feature_matched_seed_results.csv,10,1.69451370091088e-16
+Scaled residual MLP (proposed),results/feature_matched/feature_matched_seed_results.csv,10,0.0
+"GP, zero mean",results/feature_matched/feature_matched_seed_results.csv,10,8.947351607384405e-06
+"GP, $u_{\mathrm{OU}}$ prior mean",results/feature_matched/feature_matched_seed_results.csv,10,6.15103949353842e-06
+Neural ODE (full field),results/feature_matched/feature_matched_seed_results.csv,5,0.0
+Residual Neural ODE,results/feature_matched/feature_matched_seed_results.csv,5,0.0
+"Neural ODE (tight: rtol=1e-08, atol=1e-10)",results/neural_ode_gp/neural_ode_gp_seed_results.csv,5,0.0
+"Residual Neural ODE (tight: rtol=1e-08, atol=1e-10)",results/neural_ode_gp/neural_ode_gp_seed_results.csv,5,0.0
