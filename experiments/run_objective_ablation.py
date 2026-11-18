@@ -169,9 +169,9 @@ def summaries(out, quick=False):
         raise SystemExit(f"no shards in {out}")
     seed_df = pd.concat([pd.read_csv(f) for f in shards], ignore_index=True)
     for part, g in seed_df.groupby("part", sort=False):
-        g = g.dropna(axis=1, how="all")
+        g = _ints(g.dropna(axis=1, how="all"))
         if part == "ood":
-            main = g[g.split != "horizon"].dropna(axis=1, how="all")
+            main = _ints(g[g.split != "horizon"].dropna(axis=1, how="all"))
             summary = summarize_seeds(main, ["split", "regime", "model", "loss"], metrics=METRICS + EXTRA)
             save_results(out, part, main, summary)
             hz = g[g.split == "horizon"].dropna(axis=1, how="all")
@@ -184,6 +184,15 @@ def summaries(out, quick=False):
             save_results(out, part, g, summary)
             text = rows_tex(part, summary)
         (final_tables_dir(quick) / f"round2_objective_{part}.tex").write_text(text, encoding="utf-8")
+
+
+def _ints(df):
+    """Count columns back to integers: merging parts whose rows lack them (the horizon rows) makes them float."""
+    df = df.copy()
+    for c in ("seed", "n_fall", "n_cross", "n_cross_fail", "n_cross_spurious", "n_traj", "epochs_run", "n_params"):
+        if c in df and df[c].notna().all():
+            df[c] = df[c].astype(int)
+    return df
 
 
 def ood_tex(summary, hsum):

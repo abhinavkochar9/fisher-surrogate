@@ -1,0 +1,78 @@
+{
+  "args": {
+    "quick": false,
+    "n_seeds": null,
+    "out": "results_round2/objective_ablation",
+    "device": null,
+    "n_pairs": 300,
+    "n_time": 80,
+    "legacy_metrics": false,
+    "part": "ood",
+    "n_ood_pairs": 120,
+    "lambdas": [
+      0.01,
+      0.1,
+      1.0
+    ],
+    "levels": [
+      0.0,
+      0.001,
+      0.01,
+      0.05
+    ],
+    "tag": "ood_s2-3",
+    "seeds": [
+      2,
+      3
+    ],
+    "tables_only": false,
+    "no_summary": true
+  },
+  "data": {
+    "n_pairs": 300,
+    "n_time": 80,
+    "t_max": 5.0,
+    "u0_range": [
+      0.2,
+      2.5
+    ],
+    "eps_range": [
+      0.01,
+      0.5
+    ],
+    "data_seed": 123,
+    "split_seed": 999,
+    "train_frac": 0.7,
+    "val_frac": 0.15,
+    "integrator": "rk4",
+    "extra": {}
+  },
+  "train": {
+    "hidden": [
+      64,
+      64
+    ],
+    "activation": "tanh",
+    "epochs": 1500,
+    "batch_size": 512,
+    "lr": 0.002,
+    "patience": 150,
+    "device": "cuda"
+  },
+  "n_seeds": 10,
+  "metrics": {
+    "cross_missing": "penalize",
+    "over_mode": "max",
+    "refine": true
+  },
+  "native_weighting": {
+    "direct": "none",
+    "unscaled": "none",
+    "scaled": "inv_eps2"
+  },
+  "seeds": {
+    "direct": "2026+i",
+    "residual and PI": "2026+i+5000",
+    "noise draws": "2026+i+10000(+1 val)"
+  }
+}
