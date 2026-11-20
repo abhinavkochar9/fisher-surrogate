@@ -2,7 +2,8 @@
 from the result CSVs of the experiment scripts. Missing result files are skipped with a message.
 
 Output file names are set in FIGURE_FILES below; they carry the final manuscript numbers and are the
-file names of the manuscript's Figures/ folder (Fig. 4 is not generated here).
+file names of the manuscript's Figures/ folder.  Fig. 4 is drawn from the saved test-set predictions of
+the published residual MLP (the manuscript's original Fig. 4 came from an archived notebook).
 
 Run:  python experiments/make_figures.py [--out results/figures] [--fmt pdf]
 """
@@ -30,6 +31,7 @@ FIGURE_FILES = {   # the file names used in the manuscript's Figures/ folder
     "variance_dynamics": "fig1-gaussian_manifold_variance_dynamics_final",
     "sign_transition": "fig2-cross_dissipation_sign_transition_final",
     "nongaussian": "fig3-non_gaussian_variance_trajectories",
+    "surrogate_trajectories": "fig4-surrogate_trajectories",
     "noise": "fig5-noise_sensitivity_traj_error",
     "ood": "fig6-ood_generalization_traj_error",
     "physics_informed": "fig7-fig_pi_analysis",
@@ -127,6 +129,35 @@ def fig3(out, fmt):
 
 def _errbar(ax, x, m, ci, log=False, **kw):
     ax.errorbar(x, m, yerr=_log_ci(m, ci) if log else ci, capsize=3, marker="o", **kw)
+
+
+# Figure 4: the (u0, eps) cases of the original figure; the nearest unseen (test) pairs are drawn
+FIG4_CASES = [(0.93, 0.15), (0.60, 0.03), (0.26, 0.05)]
+
+
+def fig4(out, fmt):
+    """True (solid) and residual-MLP predicted (dashed) variance trajectories for three unseen parameter
+    pairs: the test pairs nearest to FIG4_CASES, from the saved test-set predictions of the published
+    residual MLP (results/feature_matched_ood, seed index 0)."""
+    files = sorted((RESULTS_DIR / "feature_matched_ood").glob("predictions_test_mlp_*.csv.gz"))
+    if not files:
+        return print("skip fig4 (run run_feature_matched_ood.py --family mlp)")
+    d = pd.concat(pd.read_csv(f) for f in files)
+    d = d[(d.model == "Scaled residual MLP (proposed)") & (d.seed == 0)]
+    pairs = d.groupby("pair_id")[["u0", "eps"]].first()
+    fig, ax = plt.subplots(figsize=(4.6, 3.1))
+    used = []
+    for k, (u0, eps) in enumerate(FIG4_CASES):
+        dist = ((pairs.u0 - u0) / 2.3) ** 2 + ((pairs.eps - eps) / 0.49) ** 2    # ranges of the training box
+        pid = dist.drop(index=used).idxmin(); used.append(pid)
+        g = d[d.pair_id == pid].sort_values("t")
+        ax.plot(g.t, g.u_clean, color=f"C{k}", lw=1.8,
+                label=rf"true, $u_0={g.u0.iloc[0]:.2f}$, $\varepsilon={g.eps.iloc[0]:.2f}$")
+        ax.plot(g.t, g.u_pred, color="k", lw=0.9, ls="--")
+    ax.plot([], [], color="k", lw=0.9, ls="--", label="residual MLP (predicted)")
+    ax.axhline(1.0, color="gray", ls=":", lw=1.0, label=r"$u=1$")
+    ax.set(xlabel=r"$t$", ylabel=r"$u(t)$")
+    ax.legend(fontsize=7, loc="lower right"); fig.tight_layout(); _save(fig, out, "surrogate_trajectories", fmt)
 
 
 # Figure 5 series (round 2): (label, model, loss, color, line style, marker) in objective_ablation/noise_summary.csv
@@ -316,7 +347,7 @@ def main():
     p.add_argument("--out", type=Path, default=RESULTS_DIR / "figures")
     p.add_argument("--fmt", default="pdf")
     a = p.parse_args(); a.out.mkdir(parents=True, exist_ok=True)
-    for fn in (fig1, fig2, fig3, fig5, fig6, fig7, fig8, fig9, figD10):
+    for fn in (fig1, fig2, fig3, fig4, fig5, fig6, fig7, fig8, fig9, figD10):
         fn(a.out, a.fmt)
     print("figures in", a.out)
 

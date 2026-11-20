@@ -23,13 +23,16 @@ seed 999, S = 10 seeds, unified metrics):
                     T in {5, 10, 20} of run_feature_matched_ood.py, so that the extrapolation advantage can
                     be attributed to the parameterization or to the loss weighting.  The three published
                     cells reproduce the Table 16 rows.
+  --part eps        Table 8 (error stratified by eps: eps = 0, the three in-distribution bins, the OOD range)
+                    with the scaled residual trained with the unweighted loss next to the published direct
+                    and 1/eps^2-weighted residual MLPs (same seeds and strata; the published rows reproduce).
 
 Weights are applied in the z-scored target space of each parameterization and normalized to mean 1 on
 the training split, so that the loss induced on u is the stated one (unweighted or 1/eps^2); validation
 and early stopping use the same weighted data term.  Besides the unified metrics the script reports the
 terminal error E_term = |u_hat(T_max) - u(T_max)| and the 1/eps^2-weighted trajectory MSE E_traj_w.
 
-Run:  python experiments/run_objective_ablation.py --part factorial|pi|noise|ood [--quick] [--tag NAME]
+Run:  python experiments/run_objective_ablation.py --part factorial|pi|noise|ood|eps [--quick] [--tag NAME]
       python experiments/run_objective_ablation.py --tables-only      # summaries and LaTeX from saved shards
 """
 from __future__ import annotations
@@ -95,8 +98,12 @@ def evaluate(f, test_df, mkw):
     pred["u_pred"] = f.predict_frame(test_df)
     m, per = compute_metrics(pred, pred_fn_factory=f.pred_fn_factory if mkw.get("refine") else None,
                              return_per_trajectory=True, **mkw)
-    w = 1.0 / test_df.groupby("pair_id")["eps"].first().reindex(per["pair_id"]).to_numpy() ** 2
-    m["E_traj_w"] = float(np.sum(w * per["E_traj"].to_numpy()) / np.sum(w))
+    eps = test_df.groupby("pair_id")["eps"].first().reindex(per["pair_id"]).to_numpy()
+    if np.all(eps > 0):
+        w = 1.0 / eps ** 2
+        m["E_traj_w"] = float(np.sum(w * per["E_traj"].to_numpy()) / np.sum(w))
+    else:   # the eps = 0 stratum of Table 8: the 1/eps^2-weighted error is undefined
+        m["E_traj_w"] = float("nan")
     m.update(train_time_s=f.train_time_s, epochs_run=f.epochs_run, n_params=f.n_params,
              best_val=float(getattr(f.model, "best_val", np.nan)))
     return m
@@ -163,6 +170,21 @@ def part_ood(train_df, val_df, test_df, seeds, tcfg, mkw, n_ood, n_time):
     return rows
 
 
+def part_eps(train_df, val_df, test_df, seeds, tcfg, mkw, n_extra, n_time):
+    from run_eps_ablation import eps_strata   # exactly the strata of Table 8
+    strata = eps_strata(test_df, n_time, n_extra)
+    rows = []
+    for i in seeds:
+        for param, weighting in [("direct", "none"), ("scaled", "none"), ("scaled", "inv_eps2")]:
+            print(f"eps seed {i:02d}  {param:8s}  {weighting}", flush=True)
+            f = fit(train_df, val_df, param, weighting, seed_of(i), tcfg)
+            for st, data in strata.items():
+                rows.append({"part": "eps", "eps_range": st, "model": PARAMS[param], "loss": WEIGHTINGS[weighting],
+                             "lambda": 0.0, "published": weighting == NATIVE[param], "seed": i,
+                             "n_pairs": data.pair_id.nunique(), **evaluate(f, data, mkw)})
+    return rows
+
+
 def summaries(out, quick=False):
     shards = sorted(glob.glob(str(out / "shard_*_seed_results.csv")))
     if not shards:
@@ -178,6 +200,10 @@ def summaries(out, quick=False):
             hsum = summarize_seeds(hz, ["regime", "model", "loss"], metrics=["A_T", "E_T", "D_T"])
             save_results(out, "ood_horizon", hz, hsum)
             text = ood_tex(summary, hsum)
+        elif part == "eps":
+            summary = summarize_seeds(g, ["eps_range", "model", "loss"], metrics=METRICS + EXTRA)
+            save_results(out, part, g, summary)
+            text = eps_tex(summary)
         else:
             keys = (["noise"] if part == "noise" else []) + ["model", "loss"]
             summary = summarize_seeds(g, keys, metrics=METRICS + EXTRA)
@@ -189,10 +215,32 @@ def summaries(out, quick=False):
 def _ints(df):
     """Count columns back to integers: merging parts whose rows lack them (the horizon rows) makes them float."""
     df = df.copy()
-    for c in ("seed", "n_fall", "n_cross", "n_cross_fail", "n_cross_spurious", "n_traj", "epochs_run", "n_params"):
+    for c in ("seed", "n_fall", "n_cross", "n_cross_fail", "n_cross_spurious", "n_traj", "epochs_run", "n_params",
+              "n_pairs"):
         if c in df and df[c].notna().all():
             df[c] = df[c].astype(int)
     return df
+
+
+def eps_tex(summary):
+    """Table 8 layout: eps range & model & loss & four metrics & n_fail, then the direct/residual E_traj ratios."""
+    lines = ["% Table 8 (tab:eps_ablation) with the scaled residual MLP trained with the unweighted loss as well;",
+             "% the Direct MLP and the 1/eps^2-weighted Residual MLP rows are the published ones (same seeds).",
+             "% Mean +/- 95% CI over S = 10 seeds; last column n_fail ('--': no true crossing in the stratum).",
+             "% Generated by: python experiments/run_objective_ablation.py --tables-only"]
+    for st, g in summary.groupby("eps_range", sort=False):
+        lines.append(f"% --- {st}")
+        for _, r in g.iterrows():
+            cells = [latex.cell(r[f"{m}_mean"], r[f"{m}_ci"]) for m in METRICS]
+            nf = "--" if int(r["n_cross_total"]) == 0 else str(int(r["n_cross_fail_total"]))
+            lines.append(" & ".join([st, r["model"], r["loss"]] + cells + [nf]) + r" \\")
+        d = g[g.model == PARAMS["direct"]].iloc[0]
+        for _, r in g[g.model == PARAMS["scaled"]].iterrows():
+            if r["E_traj_mean"] > 0:
+                sep = d["E_traj_mean"] - d["E_traj_ci"] > r["E_traj_mean"] + r["E_traj_ci"]
+                lines.append(f"%     direct / residual ({r['loss']}) on E_traj: {d['E_traj_mean'] / r['E_traj_mean']:.3g}x; "
+                             f"95% intervals {'separated' if sep else 'overlap'}")
+    return "\n".join(lines) + "\n"
 
 
 def ood_tex(summary, hsum):
@@ -232,8 +280,9 @@ def rows_tex(part, summary):
 
 def main():
     p = torch_parser(__doc__)
-    p.add_argument("--part", choices=["factorial", "pi", "noise", "ood"])
+    p.add_argument("--part", choices=["factorial", "pi", "noise", "ood", "eps"])
     p.add_argument("--n-ood-pairs", type=int, default=120)
+    p.add_argument("--n-extra-pairs", type=int, default=120, help="pairs for the eps=0 and OOD sets of Table 8")
     p.add_argument("--lambdas", type=float, nargs="*", default=[0.01, 0.1, 1.0])
     p.add_argument("--levels", type=float, nargs="*", default=[0.0, 0.001, 0.01, 0.05])
     p.add_argument("--tag", default=None, help="shard name (default: the part)")
@@ -256,6 +305,8 @@ def main():
         rows = part_pi(train_df, val_df, test_df, seeds, tcfg, mkw, args.lambdas)
     elif args.part == "ood":
         rows = part_ood(train_df, val_df, test_df, seeds, tcfg, mkw, 12 if args.quick else args.n_ood_pairs, dcfg.n_time)
+    elif args.part == "eps":
+        rows = part_eps(train_df, val_df, test_df, seeds, tcfg, mkw, 12 if args.quick else args.n_extra_pairs, dcfg.n_time)
     else:
         rows = part_noise(train_df, val_df, test_df, seeds, tcfg, mkw, args.levels)
     tag = args.tag or args.part

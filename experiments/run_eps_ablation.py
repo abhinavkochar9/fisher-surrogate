@@ -20,6 +20,20 @@ from fisher_surrogate.data import (EPS_BINS, EPS_OOD_RANGE, TRAIN_U0_RANGE, eps_
 from fisher_surrogate.metrics import summarize_seeds
 
 
+def eps_strata(test_df, n_time, n_extra):
+    """The strata of Table 8: eps = 0, the eps bins of the standard test set, and the OOD range."""
+    test_df = test_df.copy()
+    test_df["eps_bin"] = test_df["eps"].map(eps_bin_label)
+    strata = {"$\\varepsilon = 0$ (exact)": make_eps_zero_dataset(n_extra, n_time, seed=OOD_DATA_SEED_BASE + 41)}
+    for name, lo, hi in EPS_BINS:
+        sub = test_df[test_df.eps_bin == name]
+        if len(sub):
+            strata[name] = sub
+    strata[f"[{EPS_OOD_RANGE[0]}, {EPS_OOD_RANGE[1]}] (OOD)"] = make_dataset(
+        n_extra, n_time, TRAIN_U0_RANGE, EPS_OOD_RANGE, seed=OOD_DATA_SEED_BASE + 42)
+    return strata
+
+
 def main():
     p = torch_parser(__doc__)
     p.add_argument("--n-extra-pairs", type=int, default=120, help="pairs for the eps=0 and OOD sets")
@@ -28,15 +42,7 @@ def main():
     n_extra = 12 if args.quick else args.n_extra_pairs
     out = out_dir(args, "eps_ablation")
     train_df, val_df, test_df = build_splits(dcfg)
-    test_df = test_df.copy()
-    test_df["eps_bin"] = test_df["eps"].map(eps_bin_label)
-    strata = {"$\\varepsilon = 0$ (exact)": make_eps_zero_dataset(n_extra, dcfg.n_time, seed=OOD_DATA_SEED_BASE + 41)}
-    for name, lo, hi in EPS_BINS:
-        sub = test_df[test_df.eps_bin == name]
-        if len(sub):
-            strata[name] = sub
-    strata[f"[{EPS_OOD_RANGE[0]}, {EPS_OOD_RANGE[1]}] (OOD)"] = make_dataset(
-        n_extra, dcfg.n_time, TRAIN_U0_RANGE, EPS_OOD_RANGE, seed=OOD_DATA_SEED_BASE + 42)
+    strata = eps_strata(test_df, dcfg.n_time, n_extra)
     rows = []
     for i in range(n_seeds):
         s = seed_of(i)
